@@ -1,17 +1,17 @@
-echo "Switch to Omarchy Chromium for synchronized theme switching"
+echo "Switch to Hiarchy Chromium for synchronized theme switching"
 
-if omarchy-cmd-present chromium; then
+if hiarchy-cmd-present chromium; then
   set_theme_colors() {
-    if [[ -f ~/.config/omarchy/current/theme/chromium.theme ]]; then
-      chromium --no-startup-window --set-theme-color="$(<~/.config/omarchy/current/theme/chromium.theme)"
+    if [[ -f ~/.config/hiarchy/current/theme/chromium.theme ]]; then
+      chromium --no-startup-window --set-theme-color="$(<~/.config/hiarchy/current/theme/chromium.theme)"
     else
       # Use a default, neutral grey if theme doesn't have a color
       chromium --no-startup-window --set-theme-color="28,32,39"
     fi
   }
 
-  omarchy-pkg-drop chromium
-  omarchy-pkg-add omarchy-chromium
+  hiarchy-pkg-drop chromium
+  hiarchy-pkg-add hiarchy-chromium
 
   if pgrep -x chromium; then
     if gum confirm "Chromium must be restarted. Ready?"; then

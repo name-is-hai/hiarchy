@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+echo -e "\e[32mUpdate Hiarchy\e[0m"
+
+git -C $HIARCHY_PATH pull --autostash
+git -C $HIARCHY_PATH --no-pager diff --check || git -C $HIARCHY_PATH reset --merge

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Overwrite the user config for hypridle with the Hiarchy default and restart the service.
+
+hiarchy-refresh-config hypr/hypridle.conf
+hiarchy-restart-hypridle

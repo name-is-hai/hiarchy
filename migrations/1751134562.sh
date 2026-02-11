@@ -1,4 +1,4 @@
 echo "Ensure all indexes and packages are up to date"
 
-omarchy-refresh-pacman
+hiarchy-refresh-pacman
 sudo pacman -Syu --noconfirm

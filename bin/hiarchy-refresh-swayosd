@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Overwrite the user configs for swayosd (controls on-screen feedback for changing volume/songs etc) with the Hiarchy defaults and restart the service.
+
+hiarchy-refresh-config swayosd/config.toml
+hiarchy-refresh-config swayosd/style.css
+hiarchy-restart-swayosd

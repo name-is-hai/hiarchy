@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Finish the installation of Hiarchy with items that can only be done after logging in.
+
+set -e
+
+FIRST_RUN_MODE=~/.local/state/hiarchy/first-run.mode
+
+if [[ -f "$FIRST_RUN_MODE" ]]; then
+  rm -f "$FIRST_RUN_MODE"
+
+  bash "$HIARCHY_PATH/install/first-run/battery-monitor.sh"
+  bash "$HIARCHY_PATH/install/first-run/cleanup-reboot-sudoers.sh"
+  bash "$HIARCHY_PATH/install/first-run/firewall.sh"
+  bash "$HIARCHY_PATH/install/first-run/dns-resolver.sh"
+  bash "$HIARCHY_PATH/install/first-run/gnome-theme.sh"
+  bash "$HIARCHY_PATH/install/first-run/elephant.sh"
+  sudo rm -f /etc/sudoers.d/first-run
+
+  bash "$HIARCHY_PATH/install/first-run/welcome.sh"
+  bash "$HIARCHY_PATH/install/first-run/wifi.sh"
+fi

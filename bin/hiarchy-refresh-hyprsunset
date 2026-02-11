@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Overwrite the user config for hyprsunset with the Hiarchy default and restart the service.
+#
+hiarchy-refresh-config hypr/hyprsunset.conf
+hiarchy-restart-hyprsunset

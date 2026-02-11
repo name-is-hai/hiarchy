@@ -1,4 +1,4 @@
-echo "Move Omarchy Package Repository after Arch core/extra/multilib and remove AUR"
+echo "Move Hiarchy Package Repository after Arch core/extra/multilib and remove AUR"
 
-omarchy-refresh-pacman
+hiarchy-refresh-pacman
 sudo pacman -Syu --noconfirm

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Launch the Hiarchy audio controls TUI (provided by wiremix).
+
+hiarchy-launch-or-focus-tui wiremix

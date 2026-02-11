@@ -1,3 +1,3 @@
-echo "Add xmlstarlet needed for updating fonts via Omarchy menu"
+echo "Add xmlstarlet needed for updating fonts via Hiarchy menu"
 
-omarchy-pkg-add xmlstarlet
+hiarchy-pkg-add xmlstarlet

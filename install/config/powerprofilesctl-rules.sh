@@ -1,5 +1,5 @@
-if omarchy-battery-present; then
-  mapfile -t profiles < <(omarchy-powerprofiles-list)
+if hiarchy-battery-present; then
+  mapfile -t profiles < <(hiarchy-powerprofiles-list)
 
   if [[ ${#profiles[@]} -gt 1 ]]; then
 
