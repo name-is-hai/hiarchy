@@ -1,0 +1,3 @@
+#!/bin/bash
+
+hiarchy-restart-app waybar

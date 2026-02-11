@@ -1,5 +1,5 @@
 echo "Add Catppuccin Latte light theme"
 
-if [[ ! -L "~/.config/omarchy/themes/catppuccin-latte" ]]; then
-  ln -snf ~/.local/share/omarchy/themes/catppuccin-latte ~/.config/omarchy/themes/
+if [[ ! -L "~/.config/hiarchy/themes/catppuccin-latte" ]]; then
+  ln -snf ~/.local/share/hiarchy/themes/catppuccin-latte ~/.config/hiarchy/themes/
 fi

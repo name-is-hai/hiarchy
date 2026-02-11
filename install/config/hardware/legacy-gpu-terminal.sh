@@ -9,7 +9,7 @@ for card in /sys/class/drm/card*; do
 
     for legacy in "${legacy_drivers[@]}"; do
       if [[ "$driver" == "$legacy" ]]; then
-        omarchy-install-terminal alacritty
+        hiarchy-install-terminal alacritty
         exit 0
       fi
     done

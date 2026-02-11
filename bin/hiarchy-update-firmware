@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+echo -e "\e[32mUpdate Firmware\e[0m"
+
+if hiarchy-cmd-missing fwupdmgr; then
+  hiarchy-pkg-add fwupd
+fi
+
+fwupdmgr refresh --force
+sudo fwupdmgr update

@@ -1,6 +1,6 @@
 echo "Change to openai-codex instead of openai-codex-bin"
 
-if omarchy-pkg-present openai-codex-bin; then
-    omarchy-pkg-drop openai-codex-bin
-    omarchy-pkg-add openai-codex
+if hiarchy-pkg-present openai-codex-bin; then
+    hiarchy-pkg-drop openai-codex-bin
+    hiarchy-pkg-add openai-codex
 fi

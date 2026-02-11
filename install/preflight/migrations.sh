@@ -1,6 +1,6 @@
-OMARCHY_MIGRATIONS_STATE_PATH=~/.local/state/omarchy/migrations
-mkdir -p $OMARCHY_MIGRATIONS_STATE_PATH
+HIARCHY_MIGRATIONS_STATE_PATH=~/.local/state/hiarchy/migrations
+mkdir -p $HIARCHY_MIGRATIONS_STATE_PATH
 
-for file in ~/.local/share/omarchy/migrations/*.sh; do
-  touch "$OMARCHY_MIGRATIONS_STATE_PATH/$(basename "$file")"
+for file in ~/.local/share/hiarchy/migrations/*.sh; do
+  touch "$HIARCHY_MIGRATIONS_STATE_PATH/$(basename "$file")"
 done

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Overwrite the user configs for the Walker application launcher (which also powers the Hiarchy Menu) and restart the services.
+
+# Ensure walker is set to autostart
+mkdir -p ~/.config/autostart/
+cp $HIARCHY_PATH/default/walker/walker.desktop ~/.config/autostart/
+
+# And restarts if it crashes or is killed
+mkdir -p ~/.config/systemd/user/app-walker@autostart.service.d/
+cp $HIARCHY_PATH/default/walker/restart.conf ~/.config/systemd/user/app-walker@autostart.service.d/restart.conf
+
+systemctl --user daemon-reload
+
+# Refresh configs
+hiarchy-refresh-config walker/config.toml
+hiarchy-refresh-config elephant/calc.toml
+hiarchy-refresh-config elephant/desktopapplications.toml
+
+# Restart service
+hiarchy-restart-walker

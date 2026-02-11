@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+# Reinstall the Hiarchy configuration directory from the git source.
+
+git clone "https://github.com/name-is-hai/hiarchy.git" ~/.local/share/hiarchy-new >/dev/null
+mv $HIARCHY_PATH ~/.local/share/hiarchy-old
+mv ~/.local/share/hiarchy-new $HIARCHY_PATH

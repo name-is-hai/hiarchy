@@ -1,6 +1,6 @@
-# Copy over Omarchy configs
+# Copy over Hiarchy configs
 mkdir -p ~/.config
-cp -R ~/.local/share/omarchy/config/* ~/.config/
+cp -R ~/.local/share/hiarchy/config/* ~/.config/
 
-# Use default bashrc from Omarchy
-cp ~/.local/share/omarchy/default/bashrc ~/.bashrc
+# Use default bashrc from Hiarchy
+cp ~/.local/share/hiarchy/default/bashrc ~/.bashrc

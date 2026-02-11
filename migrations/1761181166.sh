@@ -1,3 +1,3 @@
 echo "Change to pinned version of wayfreeze"
-omarchy-pkg-drop wayfreeze-git
-omarchy-pkg-add wayfreeze
+hiarchy-pkg-drop wayfreeze-git
+hiarchy-pkg-add wayfreeze

@@ -1,13 +1,13 @@
 echo "Migrate to new theme setup"
 
-# Move user-added backgrounds from Omarchy theme folders to user config
-OMARCHY_DIR="$HOME/.local/share/omarchy"
-USER_BACKGROUNDS_DIR="$HOME/.config/omarchy/backgrounds"
+# Move user-added backgrounds from Hiarchy theme folders to user config
+HIARCHY_DIR="$HOME/.local/share/hiarchy"
+USER_BACKGROUNDS_DIR="$HOME/.config/hiarchy/backgrounds"
 
-if [[ -d "$OMARCHY_DIR/themes" ]]; then
-  cd "$OMARCHY_DIR"
+if [[ -d "$HIARCHY_DIR/themes" ]]; then
+  cd "$HIARCHY_DIR"
 
-  # Get list of git-tracked background files (relative to omarchy dir)
+  # Get list of git-tracked background files (relative to hiarchy dir)
   mapfile -t TRACKED_BACKGROUNDS < <(git ls-files --cached 'themes/*/backgrounds/*' 2>/dev/null)
 
   # Find all background files and check if they're untracked (user-added)
@@ -40,8 +40,8 @@ if [[ -d "$OMARCHY_DIR/themes" ]]; then
   done
 fi
 
-THEMES_DIR="$HOME/.config/omarchy/themes"
-CURRENT_THEME_LINK="$HOME/.config/omarchy/current/theme"
+THEMES_DIR="$HOME/.config/hiarchy/themes"
+CURRENT_THEME_LINK="$HOME/.config/hiarchy/current/theme"
 
 # Get current theme name before removing anything
 CURRENT_THEME_NAME=""
@@ -49,17 +49,17 @@ if [[ -L $CURRENT_THEME_LINK ]]; then
   CURRENT_THEME_NAME=$(basename "$(readlink "$CURRENT_THEME_LINK")")
 elif [[ -d $CURRENT_THEME_LINK ]]; then
   CURRENT_THEME_NAME=$(basename "$CURRENT_THEME_LINK")
-elif [[ -f "$HOME/.config/omarchy/current/theme.name" ]]; then
-  CURRENT_THEME_NAME=$(cat "$HOME/.config/omarchy/current/theme.name")
+elif [[ -f "$HOME/.config/hiarchy/current/theme.name" ]]; then
+  CURRENT_THEME_NAME=$(cat "$HOME/.config/hiarchy/current/theme.name")
 fi
 
-# Remove all symlinks from ~/.config/omarchy/themes
+# Remove all symlinks from ~/.config/hiarchy/themes
 find "$THEMES_DIR" -mindepth 1 -maxdepth 1 -type l -delete
 
 # Re-apply the current theme with the new system
 if [[ -n $CURRENT_THEME_NAME ]]; then
-  omarchy-theme-set "$CURRENT_THEME_NAME"
+  hiarchy-theme-set "$CURRENT_THEME_NAME"
 else
   # Backup to ensure a theme is set if we can't deduce the name
-  omarchy-theme-set "Tokyo Night"
+  hiarchy-theme-set "Tokyo Night"
 fi

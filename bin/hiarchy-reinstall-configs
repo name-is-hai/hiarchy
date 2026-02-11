@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+# Overwrite all user configs with the Hiarchy defaults.
+
+if [ "$EUID" -eq 0 ]; then
+  echo "Error: This script should not be run as root"
+  exit 1
+fi
+
+echo "Resetting all Hiarchy configs"
+cp -R ~/.local/share/hiarchy/config/* ~/.config/
+cp ~/.local/share/hiarchy/default/bashrc ~/.bashrc
+echo '[[ -f ~/.bashrc ]] && . ~/.bashrc' | tee ~/.bash_profile >/dev/null
+
+$(bash $HIARCHY_PATH/install/config/theme.sh)
+
+hiarchy-refresh-limine
+hiarchy-refresh-plymouth
+hiarchy-nvim-setup

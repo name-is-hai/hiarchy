@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+hiarchy-launch-floating-terminal-with-presentation "voxtype setup model"
+hiarchy-restart-waybar

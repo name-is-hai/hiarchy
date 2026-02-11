@@ -1,0 +1,63 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+  echo "Usage: hiarchy-theme-set <theme-name>"
+  exit 1
+fi
+
+CURRENT_THEME_PATH="$HOME/.config/hiarchy/current/theme"
+NEXT_THEME_PATH="$HOME/.config/hiarchy/current/next-theme"
+USER_THEMES_PATH="$HOME/.config/hiarchy/themes"
+HIARCHY_THEMES_PATH="$HIARCHY_PATH/themes"
+
+THEME_NAME=$(echo "$1" | sed -E 's/<[^>]+>//g' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
+if [[ -d "$USER_THEMES_PATH/$THEME_NAME" ]]; then
+  THEME_PATH="$USER_THEMES_PATH/$THEME_NAME"
+elif [[ -d "$HIARCHY_THEMES_PATH/$THEME_NAME" ]]; then
+  THEME_PATH="$HIARCHY_THEMES_PATH/$THEME_NAME"
+else
+  echo "Theme '$THEME_NAME' does not exist"
+  exit 1
+fi
+
+# Setup clean next theme directory (for atomic theme config swapping)
+rm -rf "$NEXT_THEME_PATH"
+mkdir -p "$NEXT_THEME_PATH"
+
+# Copy static configs
+cp -r "$THEME_PATH/"* "$NEXT_THEME_PATH/" 2>/dev/null
+
+# Generate dynamic configs
+hiarchy-theme-set-templates
+
+# Swap next theme in as current
+rm -rf "$CURRENT_THEME_PATH"
+mv "$NEXT_THEME_PATH" "$CURRENT_THEME_PATH"
+
+# Store theme name for reference
+echo "$THEME_NAME" > "$HOME/.config/hiarchy/current/theme.name"
+
+# Change background with theme
+hiarchy-theme-bg-next
+
+# Restart components to apply new theme
+if pgrep -x waybar >/dev/null; then
+  hiarchy-restart-waybar
+fi
+hiarchy-restart-swayosd
+hiarchy-restart-terminal
+hiarchy-restart-hyprctl
+hiarchy-restart-btop
+hiarchy-restart-opencode
+hiarchy-restart-mako
+
+# Change app-specific themes
+hiarchy-theme-set-gnome
+hiarchy-theme-set-browser
+hiarchy-theme-set-vscode
+hiarchy-theme-set-obsidian
+hiarchy-theme-set-asusctl
+
+# Call hook on theme set
+hiarchy-hook theme-set "$THEME_NAME"

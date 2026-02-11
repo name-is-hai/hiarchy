@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Sync Hiarchy theme to all Obsidian vaults
+
+CURRENT_THEME_DIR="$HOME/.config/hiarchy/current/theme"
+
+[ -f "$CURRENT_THEME_DIR/obsidian.css" ] || exit 0
+
+jq -r '.vaults | values[].path' ~/.config/obsidian/obsidian.json 2>/dev/null | while read -r vault_path; do
+  [ -d "$vault_path/.obsidian" ] || continue
+
+  theme_dir="$vault_path/.obsidian/themes/Hiarchy"
+  mkdir -p "$theme_dir"
+
+  [ -f "$theme_dir/manifest.json" ] || cat >"$theme_dir/manifest.json" <<'EOF'
+{
+  "name": "Hiarchy",
+  "version": "1.0.0",
+  "minAppVersion": "0.16.0",
+  "description": "Automatically syncs with your current Hiarchy system theme colors and fonts",
+  "author": "Hiarchy",
+  "authorUrl": "https://hiarchy.org"
+}
+EOF
+
+  cp "$CURRENT_THEME_DIR/obsidian.css" "$theme_dir/theme.css"
+done

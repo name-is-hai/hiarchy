@@ -1,0 +1,2 @@
+#!/bin/bash
+cat $HIARCHY_PATH/version
