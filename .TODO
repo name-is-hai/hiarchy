@@ -61,6 +61,6 @@
 [ ] Remove bash-completion
 
 
-
+[x] Update base-devel
 [x] Check on bin/hiarchy-menu what does show_update_channel_menu do may be remove it
 [x] Check on brave
