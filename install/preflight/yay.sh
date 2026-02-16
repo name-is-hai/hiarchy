@@ -1,5 +1,5 @@
 # Move to a temporary directory (like /opt or your home folder)
-cd /opt
+cd ~/
 
 # Clone the repository
 sudo git clone https://aur.archlinux.org/yay.git
