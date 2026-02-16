@@ -91,7 +91,6 @@ libyaml
 libqalculate
 libreoffice-fresh
 llvm
-localsend
 luarocks
 mako
 man-db
@@ -107,7 +106,6 @@ nss-mdns
 neovim
 obs-studio
 pamixer
-pinta
 playerctl
 plocate
 plymouth
@@ -137,7 +135,6 @@ xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 xmlstarlet
 xournalpp
-yaru-icon-theme
 zoxide
 
 # MacBook support
