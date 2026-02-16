@@ -75,8 +75,6 @@ mise
 mpv
 nautilus
 nautilus-python
-nodejs
-pnpm
 gnome-disk-utility
 noto-fonts
 noto-fonts-cjk
@@ -109,7 +107,6 @@ sushi
 swaybg
 swayosd
 system-config-printer
-terraform
 tldr
 tree-sitter-cli
 tobi-try
@@ -138,7 +135,6 @@ xmlstarlet
 xournalpp
 yaru-icon-theme
 yay
-zen-browser-bin
 zoxide
 
 # MacBook support
