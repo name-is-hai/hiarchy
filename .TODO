@@ -1,58 +1,66 @@
-[ ] Remove config\alacritty
-[ ] Remove config\ghostty
-[ ] Remove config\opencode
-[ ] Remove config\tmux
-[ ] Remove default\alacritty
-[ ] Remove default\bash
-[ ] Remove default\bashrc
-[ ] Remove default\themed\asusctl.rgb.tpl
-[ ] Remove default\themed\alacritty.toml.tpl
-[ ] Remove default\hypr\apps\davinci-resolve.conf
-[ ] Remove default\hypr\apps\1password.conf
-[ ] Remove default\hypr\apps\bitwarden.conf
+[x] Remove config/alacritty
+[x] Remove default/alacritty
+
+[x] Remove config/ghostty
+[x] Remove config/opencode
+[x] Remove config/tmux
+[x] Remove default/hypr/apps/davinci-resolve.conf
+[x] Remove default/hypr/apps/1password.conf
+[x] Remove default/hypr/apps/bitwarden.conf
+[x] Remove install/post-install/pacman.sh
+[x] Remove install/config/hardware/legacy-gpu-terminal.sh
+[x] Remove default/ghostty/screensaver
 
 
 
-[ ] Remove hiarchy-install-chromium-google-account
-[ ] Remove hiarchy-install-dev-env
-[ ] Remove hiarchy-remove-dev-env
-[ ] Remove hiarchy-install-dropbox
-[ ] Remove hiarchy-install-steam
-[ ] Remove hiarchy-install-xbox-controllers
-[ ] Remove hiarchy-update-branch
-[ ] Remove hiarchy-version-branch
-[ ] Remove hiarchy-version
-[ ] Remove hiarchy-version-channel
-[ ] Remove hiarchy-webapp-handler-hey
-[ ] Remove hiarchy-webapp-handler-zoom
-[ ] Remove 1password
-[ ] Remove tmux
-
+[x] Remove hiarchy-install-terminal
+[x] Remove hiarchy-install-chromium-google-account
+[x] Remove hiarchy-install-dev-env
+[x] Remove hiarchy-remove-dev-env
+[x] Remove hiarchy-install-dropbox
+[x] Remove hiarchy-install-steam
+[x] Remove hiarchy-install-xbox-controllers
+[x] Remove hiarchy-update-branch
+[x] Remove hiarchy-version-branch
+[x] Remove hiarchy-channel-set
+[x] Remove hiarchy-version
+[x] Remove hiarchy-version-channel
+[x] Remove hiarchy-webapp-handler-hey
+[x] Remove hiarchy-webapp-handler-zoom
+[x] Remove 1password
+[x] Remove tmux
 
 [ ] Update using thunar instead of nautilus
 
 
-[ ] Update hiarchy-menu
-[ ] Update hiarchy-menu-keybindings
-[ ] Update hiarchy-remove-all
-[ ] Update config\fastfetch\config.jsonc
-[ ] Update config\hypr\bindings.conf
-[ ] Update default\hypr\bindings
-[ ] Update config\waybar
-[ ] Update install\omarchy-base.packages maybe remove hiarchy-nvim hiarchy-walker
-[ ] Update default\elephant\hiarchy_themes.lua
-[ ] Update default\hypr\apps\browser.conf to using zenbrowser
-[ ] Update default\hypr\input.conf for vi
+[x] Update hiarchy-menu
+[x] Update hiarchy-remove-all
+
+[ ] Update config/waybar
+[x] Update config/hypr/bindings.conf
+[x] Update default/hypr/bindings
+[ ] Update install/config/config.sh to using .zshrc
+[x] Update install/packaging/webapps.sh and remove what related
+[ ] Update default/hypr/input.conf for vi
+
+[x] Update default/pacman to using just stable
+[x] Update install/preflight/pacman.sh to using just stable
+[x] Update hiarchy-refresh-pacman to using just stable
+[x] Update install/omarchy-base.packages maybe remove hiarchy-nvim hiarchy-walker
+[x] Update install/config/omarchy-ai-skill.sh
+[x] Update bin/hiarchy-menu to remove show_install_terminal_menu, show_install_ai_menu, show_install_gaming_menu, show_install_development_menu, show_install_javascript_menu, show_install_php_menu, show_install_elixir_menu, show_remove_menu, show_remove_development_menu, show_remove_javascript_menu,show_remove_php_menu, show_remove_elixir_menu
+[x] Update bin/hiarchy-menu to remove Hiarchy in show_learn_menu
+[x] Update install/packaging/webapps.sh remove some of the webapps and add new ones
 
 
-[ ] Create hiarchy-webapp-handler-zalo
+[ ] Create package install for yay packages
+
+
+[ ] Remove default/bash
+[ ] Remove default/bashrc
+[ ] Remove bash-completion
 
 
 
-
-[ ] Move default\ghostty\screensaver to kitty
-
-
-
-[ ] Check on config\hiarchy may be remove it because it use to override config
-[ ] Check on default\pacman to see what does it does
+[x] Check on bin/hiarchy-menu what does show_update_channel_menu do may be remove it
+[x] Check on brave

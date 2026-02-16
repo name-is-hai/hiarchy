@@ -5,7 +5,6 @@ autoconf-archive
 asusctl
 base
 base-devel
-broadcom-wl
 btrfs-progs
 dart
 dkms
@@ -27,7 +26,6 @@ limine-snapper-sync
 linux
 linux-firmware
 linux-headers
-macbook12-spi-driver-dkms
 nvidia-580xx-dkms
 nvidia-dkms
 nvidia-open-dkms
@@ -48,10 +46,15 @@ yay-debug
 yt6801-dkms
 zram-generator
 
+# Mac support
+# broadcom-wl
+# macbook12-spi-driver-dkms
+
+
 # T2 MacBook support packages
-apple-bcm-firmware
-apple-t2-audio-config
-linux-t2
-linux-t2-headers
-t2fanrd
-tiny-dfr
+# apple-bcm-firmware
+# apple-t2-audio-config
+# linux-t2
+# linux-t2-headers
+# t2fanrd
+# tiny-dfr

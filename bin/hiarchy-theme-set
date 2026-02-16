@@ -49,7 +49,6 @@ hiarchy-restart-swayosd
 hiarchy-restart-terminal
 hiarchy-restart-hyprctl
 hiarchy-restart-btop
-hiarchy-restart-opencode
 hiarchy-restart-mako
 
 # Change app-specific themes

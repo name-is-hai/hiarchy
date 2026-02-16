@@ -16,7 +16,7 @@ fi
 
 case "$COMMAND" in
 create)
-  DESC="$(hiarchy-version)"
+  DESC="Backup_$(date +'%Y-%m-%d_%H:%M')"
 
   echo -e "\e[32mCreate system snapshot\e[0m"
 

@@ -65,24 +65,6 @@
             "format": "\u001b[90m┌──────────────────────Software──────────────────────┐"
         },
         {
-            "type": "command",
-            "key": "\ue900 OS",
-            "keyColor": "blue",
-            "text": "version=$(hiarchy-version); echo \"Hiarchy $version\""
-        },
-        {
-            "type": "command",
-            "key": "│ ├󰘬",
-            "keyColor": "blue",
-            "text": "branch=$(hiarchy-version-branch); echo \"$branch\""
-        },
-        {
-            "type": "command",
-            "key": "│ ├󰔫",
-            "keyColor": "blue",
-            "text": "channel=$(hiarchy-version-channel); echo \"$channel\""
-        },
-        {
             "type": "kernel",
             "key": "│ ├",
             "keyColor": "blue"
@@ -142,12 +124,6 @@
             "type": "uptime",
             "key": "󱫐 Uptime",
             "keyColor": "magenta"
-        },
-        {
-            "type": "command",
-            "key": " Update",
-            "keyColor": "magenta",
-            "text": "updated=$(hiarchy-version-pkgs); echo \"$updated\""
         },
         {
             "type": "custom",

@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Overwrite the user tmux config with the Hiarchy default and reload tmux.
-
-hiarchy-refresh-config tmux/tmux.conf

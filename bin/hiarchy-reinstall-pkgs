@@ -1,11 +1,6 @@
 #!/bin/bash
 set -e
 
-# Reinstall all default Hiarchy packages from the stable channel and downgrade any packages that are too new.
-
-# Set the package repository to the stable mirrors
-hiarchy-refresh-pacman
-
 # Downgrade any packages to the stable setup
 sudo pacman -Suu --noconfirm
 

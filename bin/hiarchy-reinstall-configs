@@ -8,6 +8,7 @@ if [ "$EUID" -eq 0 ]; then
   exit 1
 fi
 
+# TODO: Migrate to .zshrc
 echo "Resetting all Hiarchy configs"
 cp -R ~/.local/share/hiarchy/config/* ~/.config/
 cp ~/.local/share/hiarchy/default/bashrc ~/.bashrc

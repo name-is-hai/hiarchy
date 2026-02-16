@@ -63,22 +63,9 @@ install_font() {
   present_terminal "echo 'Installing $1...'; sudo pacman -S --noconfirm --needed $2 && sleep 2 && hiarchy-font-set '$3'"
 }
 
-install_terminal() {
-  present_terminal "hiarchy-install-terminal $1"
-}
-
-aur_install() {
-  present_terminal "echo 'Installing $1 from AUR...'; yay -S --noconfirm $2"
-}
-
-aur_install_and_launch() {
-  present_terminal "echo 'Installing $1 from AUR...'; yay -S --noconfirm $2 && setsid gtk-launch $3"
-}
-
 show_learn_menu() {
-  case $(menu "Learn" "  Keybindings\n  Hiarchy\n  Hyprland\n󰣇  Arch\n  Neovim\n󱆃  Bash") in
+  case $(menu "Learn" "  Keybindings\n  Hyprland\n󰣇  Arch\n  Neovim\n󱆃  Bash") in
   *Keybindings*) hiarchy-menu-keybindings ;;
-  *Hiarchy*) hiarchy-launch-webapp "https://learn.omacom.io/2/the-hiarchy-manual" ;;
   *Hyprland*) hiarchy-launch-webapp "https://wiki.hypr.land/" ;;
   *Arch*) hiarchy-launch-webapp "https://wiki.archlinux.org/title/Main_page" ;;
   *Bash*) hiarchy-launch-webapp "https://devhints.io/bash" ;;
@@ -285,83 +272,15 @@ show_setup_system_menu() {
 }
 
 show_install_menu() {
-  case $(menu "Install" "󰣇  Package\n󰣇  AUR\n  Web App\n  TUI\n  Service\n  Style\n󰵮  Development\n  Editor\n  Terminal\n󱚤  AI\n󰍲  Windows\n  Gaming") in
+  case $(menu "Install" "󰣇  Package\n󰣇  AUR\n  Web App\n  TUI\n  Tailscale\n  Style\n󰍲  Windows") in
   *Package*) terminal hiarchy-pkg-install ;;
   *AUR*) terminal hiarchy-pkg-aur-install ;;
   *Web*) present_terminal hiarchy-webapp-install ;;
   *TUI*) present_terminal hiarchy-tui-install ;;
-  *Service*) show_install_service_menu ;;
-  *Style*) show_install_style_menu ;;
-  *Development*) show_install_development_menu ;;
-  *Editor*) show_install_editor_menu ;;
-  *Terminal*) show_install_terminal_menu ;;
-  *AI*) show_install_ai_menu ;;
-  *Windows*) present_terminal "hiarchy-windows-vm install" ;;
-  *Gaming*) show_install_gaming_menu ;;
-  *) show_main_menu ;;
-  esac
-}
-
-show_install_service_menu() {
-  case $(menu "Install" "  Dropbox\n  Tailscale\n󰟵  Bitwarden\n  Chromium Account") in
-  *Dropbox*) present_terminal hiarchy-install-dropbox ;;
   *Tailscale*) present_terminal hiarchy-install-tailscale ;;
-  *Bitwarden*) install_and_launch "Bitwarden" "bitwarden bitwarden-cli" "bitwarden" ;;
-  *Chromium*) present_terminal hiarchy-install-chromium-google-account ;;
-  *) show_install_menu ;;
-  esac
-}
-
-show_install_editor_menu() {
-  case $(menu "Install" "  VSCode\n  Cursor\n  Zed\n  Sublime Text\n  Helix\n  Emacs") in
-  *VSCode*) present_terminal hiarchy-install-vscode ;;
-  *Cursor*) install_and_launch "Cursor" "cursor-bin" "cursor" ;;
-  *Zed*) present_terminal "echo 'Installing Zed...'; sudo pacman -S zed && setsid gtk-launch dev.zed.Zed" ;;
-  *Sublime*) install_and_launch "Sublime Text" "sublime-text-4" "sublime_text" ;;
-  *Helix*) install "Helix" "helix" ;;
-  *Emacs*) install "Emacs" "emacs-wayland" && systemctl --user enable --now emacs.service ;;
-  *) show_install_menu ;;
-  esac
-}
-
-show_install_terminal_menu() {
-  case $(menu "Install" "  Alacritty\n  Ghostty\n  Kitty") in
-  *Alacritty*) install_terminal "alacritty" ;;
-  *Ghostty*) install_terminal "ghostty" ;;
-  *Kitty*) install_terminal "kitty" ;;
-  *) show_install_menu ;;
-  esac
-}
-
-show_install_ai_menu() {
-  ollama_pkg=$(
-    (command -v nvidia-smi &>/dev/null && echo ollama-cuda) ||
-      (command -v rocminfo &>/dev/null && echo ollama-rocm) ||
-      echo ollama
-  )
-
-  case $(menu "Install" "  Dictation\n󱚤  Claude Code\n󱚤  Copilot CLI\n󱚤  Cursor CLI\n󱚤  Gemini\n󱚤  OpenAI Codex\n󱚤  LM Studio\n󱚤  Ollama\n󱚤  Crush") in
-  *Dictation*) present_terminal hiarchy-voxtype-install ;;
-  *Claude*) install "Claude Code" "claude-code" ;;
-  *Copilot*) install "Copilot CLI" "github-copilot-cli" ;;
-  *Cursor*) install "Cursor CLI" "cursor-cli" ;;
-  *Gemini*) install "Gemini" "gemini-cli" ;;
-  *OpenAI*) install "OpenAI Codex" "openai-codex" ;;
-  *Studio*) install "LM Studio" "lmstudio" ;;
-  *Ollama*) install "Ollama" $ollama_pkg ;;
-  *Crush*) install "Crush" "crush-bin" ;;
-  *) show_install_menu ;;
-  esac
-}
-
-show_install_gaming_menu() {
-  case $(menu "Install" "  Steam\n󰢹  NVIDIA GeForce NOW\n  RetroArch [AUR]\n󰍳  Minecraft\n󰖺  Xbox Controller [AUR]") in
-  *Steam*) present_terminal hiarchy-install-steam ;;
-  *GeForce*) present_terminal hiarchy-install-geforce-now ;;
-  *RetroArch*) aur_install_and_launch "RetroArch" "retroarch retroarch-assets libretro libretro-fbneo" "com.libretro.RetroArch.desktop" ;;
-  *Minecraft*) install_and_launch "Minecraft" "minecraft-launcher" "minecraft-launcher" ;;
-  *Xbox*) present_terminal hiarchy-install-xbox-controllers ;;
-  *) show_install_menu ;;
+  *Style*) show_install_style_menu ;;
+  *Windows*) present_terminal "hiarchy-windows-vm install" ;;
+  *) show_main_menu ;;
   esac
 }
 
@@ -385,115 +304,9 @@ show_install_font_menu() {
   esac
 }
 
-show_install_development_menu() {
-  case $(menu "Install" "󰫏  Ruby on Rails\n  Docker DB\n  JavaScript\n  Go\n  PHP\n  Python\n  Elixir\n  Zig\n  Rust\n  Java\n  .NET\n  OCaml\n  Clojure") in
-  *Rails*) present_terminal "hiarchy-install-dev-env ruby" ;;
-  *Docker*) present_terminal hiarchy-install-docker-dbs ;;
-  *JavaScript*) show_install_javascript_menu ;;
-  *Go*) present_terminal "hiarchy-install-dev-env go" ;;
-  *PHP*) show_install_php_menu ;;
-  *Python*) present_terminal "hiarchy-install-dev-env python" ;;
-  *Elixir*) show_install_elixir_menu ;;
-  *Zig*) present_terminal "hiarchy-install-dev-env zig" ;;
-  *Rust*) present_terminal "hiarchy-install-dev-env rust" ;;
-  *Java*) present_terminal "hiarchy-install-dev-env java" ;;
-  *NET*) present_terminal "hiarchy-install-dev-env dotnet" ;;
-  *OCaml*) present_terminal "hiarchy-install-dev-env ocaml" ;;
-  *Clojure*) present_terminal "hiarchy-install-dev-env clojure" ;;
-  *) show_install_menu ;;
-  esac
-}
-
-show_install_javascript_menu() {
-  case $(menu "Install" "  Node.js\n  Bun\n  Deno") in
-  *Node*) present_terminal "hiarchy-install-dev-env node" ;;
-  *Bun*) present_terminal "hiarchy-install-dev-env bun" ;;
-  *Deno*) present_terminal "hiarchy-install-dev-env deno" ;;
-  *) show_install_development_menu ;;
-  esac
-}
-
-show_install_php_menu() {
-  case $(menu "Install" "  PHP\n  Laravel\n  Symfony") in
-  *PHP*) present_terminal "hiarchy-install-dev-env php" ;;
-  *Laravel*) present_terminal "hiarchy-install-dev-env laravel" ;;
-  *Symfony*) present_terminal "hiarchy-install-dev-env symfony" ;;
-  *) show_install_development_menu ;;
-  esac
-}
-
-show_install_elixir_menu() {
-  case $(menu "Install" "  Elixir\n  Phoenix") in
-  *Elixir*) present_terminal "hiarchy-install-dev-env elixir" ;;
-  *Phoenix*) present_terminal "hiarchy-install-dev-env phoenix" ;;
-  *) show_install_development_menu ;;
-  esac
-}
-
-show_remove_menu() {
-  case $(menu "Remove" "󰣇  Package\n  Web App\n  TUI\n󰵮  Development\n󰏓  Preinstalls\n  Dictation\n󰸌  Theme\n󰍲  Windows\n󰈷  Fingerprint\n  Fido2") in
-  *Package*) terminal hiarchy-pkg-remove ;;
-  *Web*) present_terminal hiarchy-webapp-remove ;;
-  *TUI*) present_terminal hiarchy-tui-remove ;;
-  *Development*) show_remove_development_menu ;;
-  *Preinstalls*) present_terminal hiarchy-remove-all ;;
-  *Dictation*) present_terminal hiarchy-voxtype-remove ;;
-  *Theme*) present_terminal hiarchy-theme-remove ;;
-  *Windows*) present_terminal "hiarchy-windows-vm remove" ;;
-  *Fingerprint*) present_terminal "hiarchy-setup-fingerprint --remove" ;;
-  *Fido2*) present_terminal "hiarchy-setup-fido2 --remove" ;;
-  *) show_main_menu ;;
-  esac
-}
-
-show_remove_development_menu() {
-  case $(menu "Remove" "󰫏  Ruby on Rails\n  JavaScript\n  Go\n  PHP\n  Python\n  Elixir\n  Zig\n  Rust\n  Java\n  .NET\n  OCaml\n  Clojure") in
-  *Rails*) present_terminal "hiarchy-remove-dev-env ruby" ;;
-  *JavaScript*) show_remove_javascript_menu ;;
-  *Go*) present_terminal "hiarchy-remove-dev-env go" ;;
-  *PHP*) show_remove_php_menu ;;
-  *Python*) present_terminal "hiarchy-remove-dev-env python" ;;
-  *Elixir*) show_remove_elixir_menu ;;
-  *Zig*) present_terminal "hiarchy-remove-dev-env zig" ;;
-  *Rust*) present_terminal "hiarchy-remove-dev-env rust" ;;
-  *Java*) present_terminal "hiarchy-remove-dev-env java" ;;
-  *NET*) present_terminal "hiarchy-remove-dev-env dotnet" ;;
-  *OCaml*) present_terminal "hiarchy-remove-dev-env ocaml" ;;
-  *Clojure*) present_terminal "hiarchy-remove-dev-env clojure" ;;
-  *) show_remove_menu ;;
-  esac
-}
-
-show_remove_javascript_menu() {
-  case $(menu "Remove" "  Node.js\n  Bun\n  Deno") in
-  *Node*) present_terminal "hiarchy-remove-dev-env node" ;;
-  *Bun*) present_terminal "hiarchy-remove-dev-env bun" ;;
-  *Deno*) present_terminal "hiarchy-remove-dev-env deno" ;;
-  *) show_remove_development_menu ;;
-  esac
-}
-
-show_remove_php_menu() {
-  case $(menu "Remove" "  PHP\n  Laravel\n  Symfony") in
-  *PHP*) present_terminal "hiarchy-remove-dev-env php" ;;
-  *Laravel*) present_terminal "hiarchy-remove-dev-env laravel" ;;
-  *Symfony*) present_terminal "hiarchy-remove-dev-env symfony" ;;
-  *) show_remove_development_menu ;;
-  esac
-}
-
-show_remove_elixir_menu() {
-  case $(menu "Remove" "  Elixir\n  Phoenix") in
-  *Elixir*) present_terminal "hiarchy-remove-dev-env elixir" ;;
-  *Phoenix*) present_terminal "hiarchy-remove-dev-env phoenix" ;;
-  *) show_remove_development_menu ;;
-  esac
-}
-
 show_update_menu() {
-  case $(menu "Update" " Hiarchy\n󰔫  Channel\n  Config\n󰸌  Extra Themes\n  Process\n󰇅  Hardware\n  Firmware\n  Password\n  Timezone\n  Time") in
+  case $(menu "Update" " Hiarchy\n  Config\n󰸌  Extra Themes\n  Process\n󰇅  Hardware\n  Firmware\n  Password\n  Timezone\n  Time") in
   *Hiarchy*) present_terminal hiarchy-update ;;
-  *Channel*) show_update_channel_menu ;;
   *Config*) show_update_config_menu ;;
   *Themes*) present_terminal hiarchy-theme-update ;;
   *Process*) show_update_process_menu ;;
@@ -506,15 +319,6 @@ show_update_menu() {
   esac
 }
 
-show_update_channel_menu() {
-  case $(menu "Update channel" "🟢 Stable\n🟡 RC\n🟠 Edge\n🔴 Dev") in
-  *Stable*) present_terminal "hiarchy-channel-set stable" ;;
-  *RC*) present_terminal "hiarchy-channel-set rc" ;;
-  *Edge*) present_terminal "hiarchy-channel-set edge" ;;
-  *Dev*) present_terminal "hiarchy-channel-set dev" ;;
-  *) show_update_menu ;;
-  esac
-}
 show_update_process_menu() {
   case $(menu "Restart" "  Hypridle\n  Hyprsunset\n  Swayosd\n󰌧  Walker\n󰍜  Waybar") in
   *Hypridle*) hiarchy-restart-hypridle ;;
@@ -579,7 +383,7 @@ show_system_menu() {
 }
 
 show_main_menu() {
-  go_to_menu "$(menu "Go" "󰀻  Apps\n󰧑  Learn\n󱓞  Trigger\n  Style\n  Setup\n󰉉  Install\n󰭌  Remove\n  Update\n  About\n  System")"
+  go_to_menu "$(menu "Go" "󰀻  Apps\n󰧑  Learn\n󱓞  Trigger\n  Style\n  Setup\n󰉉  Install\n  Update\n  About\n  System")"
 }
 
 go_to_menu() {
@@ -596,7 +400,6 @@ go_to_menu() {
   *setup*) show_setup_menu ;;
   *power*) show_setup_power_menu ;;
   *install*) show_install_menu ;;
-  *remove*) show_remove_menu ;;
   *update*) show_update_menu ;;
   *about*) show_about ;;
   *system*) show_system_menu ;;

@@ -1,12 +1,8 @@
 # Hiarchy core package list installed via install/packaging/base.sh
 # This file is also used by the ISO builder when determining needs
 
-1password-beta
-1password-cli
 aether
-alacritty
 alsa-utils
-asdcontrol
 avahi
 bash-completion
 bat
@@ -37,8 +33,6 @@ fd
 ffmpegthumbnailer
 fontconfig
 fzf
-ghostty
-github-cli
 gnome-calculator
 gnome-keyring
 gnome-themes-extra
@@ -64,6 +58,7 @@ iwd
 jq
 kdenlive
 kvantum-qt5
+kitty
 lazydocker
 lazygit
 less
@@ -76,11 +71,12 @@ localsend
 luarocks
 mako
 man-db
-mariadb-libs
 mise
 mpv
 nautilus
 nautilus-python
+nodejs
+pnpm
 gnome-disk-utility
 noto-fonts
 noto-fonts-cjk
@@ -90,9 +86,6 @@ nss-mdns
 nvim
 obs-studio
 obsidian
-hiarchy-nvim
-hiarchy-walker
-opencode
 pamixer
 pinta
 playerctl
@@ -106,21 +99,19 @@ python-poetry-core
 python-terminaltexteffects
 qt5-wayland
 ripgrep
-ruby
 rust
 satty
 sddm
 signal-desktop
 slurp
-spotify
 starship
 sushi
 swaybg
 swayosd
 system-config-printer
+terraform
 tldr
 tree-sitter-cli
-tmux
 tobi-try
 ttf-cascadia-mono-nerd
 ttf-ia-writer
@@ -147,4 +138,8 @@ xmlstarlet
 xournalpp
 yaru-icon-theme
 yay
+zen-browser-bin
 zoxide
+
+# MacBook support
+# asdcontrol
