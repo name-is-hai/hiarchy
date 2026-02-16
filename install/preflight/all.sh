@@ -1,4 +1,3 @@
-source $HIARCHY_INSTALL/preflight/yay.sh
 source $HIARCHY_INSTALL/preflight/guard.sh
 source $HIARCHY_INSTALL/preflight/begin.sh
 run_logged $HIARCHY_INSTALL/preflight/show-env.sh
