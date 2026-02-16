@@ -11,4 +11,4 @@ sudo chown -R $(whoami):$(whoami) ./yay
 cd yay
 
 # Build and install
-makepkg -si
+makepkg -si --noconfirm
