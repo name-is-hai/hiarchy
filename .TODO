@@ -50,7 +50,7 @@
 [x] Update install/config/omarchy-ai-skill.sh
 [x] Update bin/hiarchy-menu to remove show_install_terminal_menu, show_install_ai_menu, show_install_gaming_menu, show_install_development_menu, show_install_javascript_menu, show_install_php_menu, show_install_elixir_menu, show_remove_menu, show_remove_development_menu, show_remove_javascript_menu,show_remove_php_menu, show_remove_elixir_menu
 [x] Update bin/hiarchy-menu to remove Hiarchy in show_learn_menu
-[x] Update install/packaging/webapps.sh remove some of the webapps and add new ones
+[ ] Update install/packaging/webapps.sh remove some of the webapps and add new ones
 
 
 [ ] Create package install for yay packages
