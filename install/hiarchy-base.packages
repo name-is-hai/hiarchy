@@ -132,6 +132,7 @@ python-terminaltexteffects
 qt5-wayland
 qt6-wayland
 qt6-multimedia-ffmpeg
+rustup
 ripgrep
 sassc
 satty
