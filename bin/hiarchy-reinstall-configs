@@ -18,4 +18,4 @@ $(bash $HIARCHY_PATH/install/config/theme.sh)
 
 hiarchy-refresh-limine
 hiarchy-refresh-plymouth
-hiarchy-nvim-setup
+# hiarchy-nvim-setup
