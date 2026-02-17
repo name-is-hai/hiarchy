@@ -24,7 +24,7 @@ rm -rf ~/.local/share/hiarchy/
 git clone "https://github.com/${HIARCHY_REPO}.git" --depth=1 ~/.local/share/hiarchy >/dev/null
 
 # Use custom branch if instructed, otherwise default to master
-HIARCHY_REF="${HIARCHY_REF:-hiarchy}"
+HIARCHY_REF="${HIARCHY_REF:-hirachy}"
 echo -e "\e[32mUsing branch: $HIARCHY_REF\e[0m"
 cd ~/.local/share/hiarchy
 git fetch origin "${HIARCHY_REF}" && git checkout "${HIARCHY_REF}"
