@@ -1,6 +1,7 @@
 # Hiarchy core package list installed via install/packaging/base.sh
 # This file is also used by the ISO builder when determining needs
-
+rust
+qt6-multimedia-ffmpeg
 aether
 alsa-utils
 asusctl
@@ -133,7 +134,6 @@ python-terminaltexteffects
 qt5-wayland
 qt6-wayland
 ripgrep
-rust
 sassc
 satty
 sddm
