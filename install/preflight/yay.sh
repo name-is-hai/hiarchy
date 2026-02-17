@@ -10,9 +10,6 @@ cd ~/
 # Clone the repository
 git clone https://aur.archlinux.org/yay.git
 
-# Change ownership so your user can build it (makepkg cannot be run as root)
-sudo chown -R "$(whoami)":"$(whoami)" ./yay
-
 # Navigate into the folder
 cd yay
 
