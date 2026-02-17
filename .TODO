@@ -52,7 +52,7 @@
 [x] Update bin/hiarchy-menu to remove Hiarchy in show_learn_menu
 [ ] Update install/packaging/webapps.sh remove some of the webapps and add new ones
 
-
+[ ] Update change all point to default
 [ ] Create package install for yay packages
 
 
