@@ -77,7 +77,6 @@ kvantum-qt5
 lazydocker
 lazygit
 less
-lib32-nvidia-580xx-utils
 lib32-nvidia-utils
 libpulse
 libqalculate
@@ -107,9 +106,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 nss-mdns
-nvidia-580xx-dkms
 nvidia-dkms
-nvidia-open-dkms
 nvidia-utils
 neovim
 obsidian
