@@ -1,1 +1,1 @@
-chmod +x /home/liam/.local/share/hiarchy/bin/*
+chmod +x ~/.local/share/hiarchy/bin/*
