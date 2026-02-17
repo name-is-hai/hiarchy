@@ -21,7 +21,7 @@ HIARCHY_REPO="${HIARCHY_REPO:-name-is-hai/hiarchy}"
 
 echo -e "\nCloning Hiarchy from: https://github.com/${HIARCHY_REPO}.git"
 rm -rf ~/.local/share/hiarchy/
-git clone "https://github.com/${HIARCHY_REPO}.git" ~/.local/share/hiarchy >/dev/null
+git clone "https://github.com/${HIARCHY_REPO}.git" --depth=1 ~/.local/share/hiarchy >/dev/null
 
 # Use custom branch if instructed, otherwise default to master
 HIARCHY_REF="${HIARCHY_REF:-hiarchy}"
