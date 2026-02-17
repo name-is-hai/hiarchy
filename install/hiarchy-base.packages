@@ -114,6 +114,7 @@ postgresql-libs
 power-profiles-daemon
 python-gobject
 qt5-wayland
+rust
 ripgrep
 sddm
 signal-desktop
