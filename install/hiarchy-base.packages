@@ -1,6 +1,6 @@
 # Hiarchy core package list installed via install/packaging/base.sh
 # This file is also used by the ISO builder when determining needs
-qt6-multimedia-ffmpeg
+
 aether
 alsa-utils
 asusctl
@@ -108,7 +108,6 @@ noto-fonts-emoji
 noto-fonts-extra
 nss-mdns
 nvidia-580xx-dkms
-nvidia-580xx-utils
 nvidia-dkms
 nvidia-open-dkms
 nvidia-utils
@@ -132,6 +131,7 @@ python-poetry-core
 python-terminaltexteffects
 qt5-wayland
 qt6-wayland
+qt6-multimedia-ffmpeg
 ripgrep
 sassc
 satty
