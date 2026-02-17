@@ -16,7 +16,7 @@ run_logged $HIARCHY_INSTALL/config/mimetypes.sh
 run_logged $HIARCHY_INSTALL/config/localdb.sh
 run_logged $HIARCHY_INSTALL/config/walker-elephant.sh
 run_logged $HIARCHY_INSTALL/config/fast-shutdown.sh
-run_logged $HIARCHY_INSTALL/config/sudoless-asdcontrol.sh
+# run_logged $HIARCHY_INSTALL/config/sudoless-asdcontrol.sh
 run_logged $HIARCHY_INSTALL/config/input-group.sh
 run_logged $HIARCHY_INSTALL/config/powerprofilesctl-rules.sh
 run_logged $HIARCHY_INSTALL/config/hibernation.sh
