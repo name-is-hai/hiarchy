@@ -18,7 +18,6 @@ run_logged $HIARCHY_INSTALL/config/walker-elephant.sh
 run_logged $HIARCHY_INSTALL/config/fast-shutdown.sh
 run_logged $HIARCHY_INSTALL/config/sudoless-asdcontrol.sh
 run_logged $HIARCHY_INSTALL/config/input-group.sh
-run_logged $HIARCHY_INSTALL/config/hiarchy-ai-skill.sh
 run_logged $HIARCHY_INSTALL/config/powerprofilesctl-rules.sh
 run_logged $HIARCHY_INSTALL/config/hibernation.sh
 run_logged $HIARCHY_INSTALL/config/hardware/network.sh
