@@ -54,7 +54,7 @@
 
 [ ] Update change all point to default
 [ ] Create package install for yay packages
-
+[ ] Update bin/hiarchy-window-vm to create qemu
 
 [ ] Remove default/bash
 [ ] Remove default/bashrc
