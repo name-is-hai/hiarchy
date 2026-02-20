@@ -8,11 +8,6 @@
         "scripting",
         "notifications"
     ],
-    "icons": {
-        "16": "icon.png",
-        "48": "icon.png",
-        "128": "icon.png"
-    },
     "commands": {
         "copy-url": {
             "suggested_key": {
