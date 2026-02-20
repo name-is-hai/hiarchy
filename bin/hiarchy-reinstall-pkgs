@@ -2,8 +2,8 @@
 set -e
 
 # Downgrade any packages to the stable setup
-sudo pacman -Suu --noconfirm
+yay -Suu --noconfirm
 
 # Ensure all packages are installed
-mapfile -t packages < <(grep -v '^#' "$HIARCHY_PATH/install/hiarchy-base.packages" | grep -v '^$')
-sudo pacman -Syu --noconfirm --needed "${packages[@]}"
+mapfile -t packages < <(grep -v '^#' "$HIARCHY_INSTALL/hiarchy-base.packages" | grep -v '^$')
+yay -S --noconfirm --needed "${packages[@]}"
