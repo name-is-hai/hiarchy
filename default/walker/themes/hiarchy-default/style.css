@@ -1,4 +1,4 @@
-@import "../../../../../../../.config/omarchy/current/theme/walker.css";
+@import "../../../../../../../.config/hiarchy/current/theme/walker.css";
 
 * {
   all: unset;
@@ -19,7 +19,7 @@ scrollbar {
 }
 
 .large-icons {
-  -gtk-icon-size: 32px;
+  -gtk-icon-size: 32px;e
 }
 
 .box-wrapper {

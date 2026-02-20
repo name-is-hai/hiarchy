@@ -46,11 +46,12 @@
 [x] Update default/pacman to using just stable
 [x] Update install/preflight/pacman.sh to using just stable
 [x] Update hiarchy-refresh-pacman to using just stable
-[x] Update install/omarchy-base.packages maybe remove hiarchy-nvim hiarchy-walker
-[x] Update install/config/omarchy-ai-skill.sh
+[x] Update install/hiarchy-base.packages maybe remove hiarchy-nvim hiarchy-walker
+[x] Update install/config/hiarchy-ai-skill.sh
 [x] Update bin/hiarchy-menu to remove show_install_terminal_menu, show_install_ai_menu, show_install_gaming_menu, show_install_development_menu, show_install_javascript_menu, show_install_php_menu, show_install_elixir_menu, show_remove_menu, show_remove_development_menu, show_remove_javascript_menu,show_remove_php_menu, show_remove_elixir_menu
 [x] Update bin/hiarchy-menu to remove Hiarchy in show_learn_menu
 [ ] Update install/packaging/webapps.sh remove some of the webapps and add new ones
+[ ] Update themes/flexoki-light/backgrounds/2-flexoki-light-hiarchy.png
 
 [ ] Update change all point to default
 [ ] Create package install for yay packages
