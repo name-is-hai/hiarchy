@@ -1,6 +1,5 @@
 run_logged $HIARCHY_INSTALL/config/config.sh
 run_logged $HIARCHY_INSTALL/config/theme.sh
-run_logged $HIARCHY_INSTALL/config/branding.sh
 run_logged $HIARCHY_INSTALL/config/git.sh
 run_logged $HIARCHY_INSTALL/config/gpg.sh
 run_logged $HIARCHY_INSTALL/config/timezones.sh

@@ -4,7 +4,7 @@
 
 # Ensure elephant is running before launching walker
 if ! pgrep -x elephant > /dev/null; then
-  setsid uwsm-app -- elephant &
+  setsid uwsm-app -- env HIARCHY_PATH="$HIARCHY_PATH" elephant &
 fi
 
 # Ensure walker service is running

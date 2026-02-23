@@ -174,8 +174,8 @@ show_style_menu() {
   *Font*) show_font_menu ;;
   *Background*) hiarchy-theme-bg-next ;;
   *Hyprland*) open_in_editor ~/.config/hypr/looknfeel.conf ;;
-  *Screensaver*) open_in_editor ~/.config/hiarchy/branding/screensaver.txt ;;
-  *About*) open_in_editor ~/.config/hiarchy/branding/about.txt ;;
+  *Screensaver*) open_in_editor ~/.local/share/hiarchy/logo.txt ;;
+  *About*) open_in_editor ~/.local/share/hiarchy/icon.txt ;;
   *) show_main_menu ;;
   esac
 }
