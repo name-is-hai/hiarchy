@@ -1,4 +1,6 @@
--- Dynamic Hiarchy Theme Menu for Elephant/Walker
+--
+-- Dynamic hiarchy Theme Menu for Elephant/Walker
+--
 Name = "hiarchythemes"
 NamePretty = "Hiarchy Themes"
 
@@ -12,16 +14,14 @@ local function file_exists(path)
   return false
 end
 
--- Get first image file from directory using find (robust against non-images)
+-- Get first matching file from directory using ls (single call for fallback)
 local function first_image_in_dir(dir)
-  -- Uses find to explicitly look for image extensions only
-  local cmd = "find -L '" .. dir .. "' -maxdepth 1 -type f \\( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' \\) 2>/dev/null | head -n 1"
-  local handle = io.popen(cmd)
+  local handle = io.popen("ls -1 '" .. dir .. "' 2>/dev/null | head -n 1")
   if handle then
     local file = handle:read("*l")
     handle:close()
     if file and file ~= "" then
-      return file -- find returns the full path, no need to concatenate dir
+      return dir .. "/" .. file
     end
   end
   return nil
@@ -31,12 +31,7 @@ end
 function GetEntries()
   local entries = {}
   local user_theme_dir = os.getenv("HOME") .. "/.config/hiarchy/themes"
-
-  -- Fix: Prevent falling back to root "/themes"
-  local hiarchy_path = os.getenv("HIARCHY_PATH")
-  if not hiarchy_path or hiarchy_path == "" then
-    hiarchy_path = "~/.local/share/hiarchy"
-  end
+  local hiarchy_path = os.getenv("HIARCHY_PATH") or ""
   local default_theme_dir = hiarchy_path .. "/themes"
 
   local seen_themes = {}
@@ -53,7 +48,9 @@ function GetEntries()
       local theme_name = theme_path:match(".*/(.+)$")
 
       if theme_name and not seen_themes[theme_name] then
-        -- Check for preview images directly
+        seen_themes[theme_name] = true
+
+        -- Check for preview images directly (no subprocess)
         local preview_path = nil
         local preview_png = theme_path .. "/preview.png"
         local preview_jpg = theme_path .. "/preview.jpg"
@@ -63,13 +60,11 @@ function GetEntries()
         elseif file_exists(preview_jpg) then
           preview_path = preview_jpg
         else
-          -- Fallback: get first verified image from backgrounds
+          -- Fallback: get first image from backgrounds (one ls call)
           preview_path = first_image_in_dir(theme_path .. "/backgrounds")
         end
 
         if preview_path and preview_path ~= "" then
-          seen_themes[theme_name] = true
-
           local display_name = theme_name:gsub("_", " "):gsub("%-", " ")
           display_name = display_name:gsub("(%a)([%w_']*)", function(first, rest)
             return first:upper() .. rest:lower()
@@ -93,7 +88,7 @@ function GetEntries()
 
   -- Process user themes first (they take precedence)
   process_themes_from_dir(user_theme_dir)
-  -- Then process default themes
+  -- Then process default themes (only if not already seen)
   process_themes_from_dir(default_theme_dir)
 
   return entries
