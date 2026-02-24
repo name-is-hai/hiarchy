@@ -1,0 +1,2 @@
+sudo systemctl enable warp-svc
+sudo systemctl start warp-svc
