@@ -11,6 +11,7 @@ $USER ALL=(ALL) NOPASSWD: /usr/bin/ufw
 $USER ALL=(ALL) NOPASSWD: /usr/bin/ufw-docker
 $USER ALL=(ALL) NOPASSWD: /usr/bin/gtk-update-icon-cache
 $USER ALL=(ALL) NOPASSWD: /usr/bin/pacman
+$USER ALL=(ALL) NOPASSWD: /usr/bin/chsh
 $USER ALL=(ALL) NOPASSWD: SYMLINK_RESOLVED
 $USER ALL=(ALL) NOPASSWD: FIRST_RUN_CLEANUP
 EOF

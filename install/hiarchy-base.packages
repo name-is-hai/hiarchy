@@ -8,7 +8,6 @@ autoconf-archive
 avahi
 base
 base-devel
-bash-completion
 bat
 bluetui
 bolt
@@ -180,6 +179,12 @@ yaru-icon-theme
 yt6801-dkms
 zoxide
 zram-generator
+visual-studio-code-bin
+zsh
+zsh-completions
+oh-my-zsh-git
+zsh-syntax-highlighting
+zsh-autosuggestions
 
 # MacBook support
 # asdcontrol
