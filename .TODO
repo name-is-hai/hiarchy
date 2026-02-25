@@ -1,73 +1,115 @@
-[x] Remove config/alacritty
-[x] Remove default/alacritty
+# Hiarchy TODO
 
-[x] Remove config/ghostty
-[x] Remove config/opencode
-[x] Remove config/tmux
-[x] Remove default/hypr/apps/davinci-resolve.conf
-[x] Remove default/hypr/apps/1password.conf
-[x] Remove default/hypr/apps/bitwarden.conf
-[x] Remove install/post-install/pacman.sh
-[x] Remove install/config/hardware/legacy-gpu-terminal.sh
-[x] Remove default/ghostty/screensaver
+---
 
+## ✅ Removed
 
+### Config Files
+- [x] Remove config/alacritty
+- [x] Remove default/alacritty
+- [x] Remove config/ghostty
+- [x] Remove config/opencode
+- [x] Remove config/tmux
+- [x] Remove default/ghostty/screensaver
+- [x] Remove default/bash
+- [x] Remove default/bashrc
+- [x] Remove bash-completion
 
-[x] Remove hiarchy-install-terminal
-[x] Remove hiarchy-install-chromium-google-account
-[x] Remove hiarchy-install-dev-env
-[x] Remove hiarchy-remove-dev-env
-[x] Remove hiarchy-install-dropbox
-[x] Remove hiarchy-install-steam
-[x] Remove hiarchy-install-xbox-controllers
-[x] Remove hiarchy-update-branch
-[x] Remove hiarchy-version-branch
-[x] Remove hiarchy-channel-set
-[x] Remove hiarchy-version
-[x] Remove hiarchy-version-channel
-[x] Remove hiarchy-webapp-handler-hey
-[x] Remove hiarchy-webapp-handler-zoom
-[x] Remove 1password
-[x] Remove tmux
+### Hypr App Defaults
+- [x] Remove default/hypr/apps/davinci-resolve.conf
+- [x] Remove default/hypr/apps/1password.conf
+- [x] Remove default/hypr/apps/bitwarden.conf
 
-[ ] Consider using thunar instead of nautilus
+### Install Scripts
+- [x] Remove install/post-install/pacman.sh
+- [x] Remove install/config/hardware/legacy-gpu-terminal.sh
 
+### Hiarchy Commands (Install / Remove / Version / Channel)
+- [x] Remove hiarchy-install-terminal
+- [x] Remove hiarchy-install-chromium-google-account
+- [x] Remove hiarchy-install-dev-env
+- [x] Remove hiarchy-remove-dev-env
+- [x] Remove hiarchy-install-dropbox
+- [x] Remove hiarchy-install-steam
+- [x] Remove hiarchy-install-xbox-controllers
+- [x] Remove hiarchy-update-branch
+- [x] Remove hiarchy-version-branch
+- [x] Remove hiarchy-channel-set
+- [x] Remove hiarchy-version
+- [x] Remove hiarchy-version-channel
+- [x] Remove hiarchy-webapp-handler-hey
+- [x] Remove hiarchy-webapp-handler-zoom
+- [x] Remove 1password
+- [x] Remove tmux
 
-[x] Update hiarchy-menu
-[x] Update hiarchy-remove-all
+---
 
-[ ] Update config/waybar
-[x] Update config/hypr/bindings.conf
-[x] Update default/hypr/bindings
-[x] Update install/config/config.sh to using .zshrc
-[x] Add default/zsh and move zsh related stuff there
-[x] Update install/packaging/webapps.sh and remove what related
-[x] Update config/fcitx5 for vi
+## 🔄 Updated
 
-[x] Update default/pacman to using just stable
-[x] Update install/preflight/pacman.sh to using just stable
-[x] Update hiarchy-refresh-pacman to using just stable
-[x] Update install/hiarchy-base.packages maybe remove hiarchy-nvim hiarchy-walker
-[x] Update install/config/hiarchy-ai-skill.sh
-[x] Update bin/hiarchy-menu to remove show_install_terminal_menu, show_install_ai_menu, show_install_gaming_menu, show_install_development_menu, show_install_javascript_menu, show_install_php_menu, show_install_elixir_menu, show_remove_menu, show_remove_development_menu, show_remove_javascript_menu,show_remove_php_menu, show_remove_elixir_menu
-[x] Update bin/hiarchy-menu to remove Hiarchy in show_learn_menu
-[x] Update install/packaging/webapps.sh remove some of the webapps and add new ones
-[ ] Update themes/flexoki-light/backgrounds/2-flexoki-light-hiarchy.png
-[ ] Update to using hyprshot script for screenshots and remove bin/hiarchy-cmd-screenshot
+### Hiarchy Core
+- [x] Update hiarchy-menu
+- [x] Update hiarchy-remove-all
+- [x] Check show_update_channel_menu (possible removal)
+- [x] Remove "Hiarchy" from show_learn_menu
 
-[ ] Update change all symlink to default
-[ ] Create package install for yay packages
-[ ] Update bin/hiarchy-window-vm to create qemu
+#### Removed Menus from hiarchy-menu
+- [x] Remove show_install_terminal_menu
+- [x] Remove show_install_ai_menu
+- [x] Remove show_install_gaming_menu
+- [x] Remove show_install_development_menu
+- [x] Remove show_install_javascript_menu
+- [x] Remove show_install_php_menu
+- [x] Remove show_install_elixir_menu
+- [x] Remove show_remove_menu
+- [x] Remove show_remove_development_menu
+- [x] Remove show_remove_javascript_menu
+- [x] Remove show_remove_php_menu
+- [x] Remove show_remove_elixir_menu
 
-[x] Remove default/bash
-[x] Remove default/bashrc
-[x] Remove bash-completion
+### Pacman / Packages
+- [x] Update default/pacman → stable only
+- [x] Update install/preflight/pacman.sh → stable only
+- [x] Update hiarchy-refresh-pacman → stable only
+- [x] Update install/hiarchy-base.packages (maybe remove hiarchy-nvim, hiarchy-walker)
+- [x] Update base-devel
+- [ ] Create package install flow for yay packages
 
+### Install / Config
+- [x] Update install/config/config.sh → use .zshrc
+- [x] Add default/zsh and move zsh-related configs there
+- [x] Update install/config/hiarchy-ai-skill.sh
+- [x] Update config/hypr/bindings.conf
+- [x] Update default/hypr/bindings
+- [ ] Update config/waybar
+- [ ] Update all symlinks to use default/
+- [x] Update bin/hiarchy-window-vm → create QEMU VM
+- [x] Update config/fcitx5 for vi
 
-[x] Update base-devel
-[x] Check on bin/hiarchy-menu what does show_update_channel_menu do may be remove it
-[x] Check on brave
+### Webapps
+- [x] Update install/packaging/webapps.sh
+  - Remove old webapps
+  - Add new webapps
 
-[x] Add cloudflare warp client
-[ ] Make screenshot look like windows 11 one and add option to select the style of the screenshot
+---
+
+## 🆕 Added
+
+- [x] Add Cloudflare WARP client
+- [ ] Use hyprshot for screenshots and remove bin/hiarchy-cmd-screenshot
+- [ ] Add Windows 11-style screenshot UI
+- [ ] Add screenshot style selector
+
+---
+
+## 🎨 Theming
+
+- [ ] Update themes/flexoki-light/backgrounds/2-flexoki-light-hiarchy.png
+
+---
+
+## 🤔 Considerations
+
+- [ ] Consider using thunar instead of nautilus
+- [x] Check Brave
+
 
