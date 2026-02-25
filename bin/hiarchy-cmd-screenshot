@@ -73,14 +73,21 @@ esac
 
 [ -z "$SELECTION" ] && exit 0
 
+FILE_NAME="screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png"
+FILE_PATH="$OUTPUT_DIR/$FILE_NAME"
+
 if [[ $PROCESSING == "slurp" ]]; then
-grim -g "$SELECTION" - |
+  grim -g "$SELECTION" - |
   satty --filename - \
-    --output-filename "$OUTPUT_DIR/screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png" \
+    --output-filename "$FILE_PATH" \
     --early-exit \
     --actions-on-enter save-to-clipboard \
     --save-after-copy \
-    --copy-command 'wl-copy'
+    --copy-command 'wl-copy' \
+    --disable-notifications && \
+  notify-send "Screenshot" "Saved to $OUTPUT_DIR\nCopied to clipboard." -i "$FILE_PATH" -c screenshot -t 3000
 else
-  grim -g "$SELECTION" - | wl-copy
+  grim -g "$SELECTION" "$FILE_PATH" && \
+  wl-copy < "$FILE_PATH" && \
+  notify-send "Screenshot" "Copied to clipboard and saved." -i "$FILE_PATH" -c screenshot -t 3000
 fi
