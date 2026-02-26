@@ -6,6 +6,3 @@ export PATH=$HIARCHY_PATH/bin:$PATH
 
 # Set default terminal and editor
 source ~/.config/uwsm/default
-
-# Activate mise if present on the system
-hiarchy-cmd-present mise && eval "$(mise activate bash)"

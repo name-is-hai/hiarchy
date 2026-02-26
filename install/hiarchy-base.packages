@@ -181,10 +181,7 @@ zoxide
 zram-generator
 visual-studio-code-bin
 zsh
-zsh-completions
-oh-my-zsh-git
-zsh-syntax-highlighting
-zsh-autosuggestions
+zinit
 
 # MacBook support
 # asdcontrol

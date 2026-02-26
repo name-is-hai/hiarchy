@@ -1,7 +1,5 @@
-source <(fzf --zsh)
-
-source ~/.local/share/hiarchy/default/zsh/shell
 source ~/.local/share/hiarchy/default/zsh/envs
+source ~/.local/share/hiarchy/default/zsh/shell
 source ~/.local/share/hiarchy/default/zsh/functions
 source ~/.local/share/hiarchy/default/zsh/aliases
 source ~/.local/share/hiarchy/default/zsh/init
