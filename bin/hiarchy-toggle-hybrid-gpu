@@ -4,7 +4,7 @@
 # Requires reboot to take effect.
 
 # Ensure supergfxctl has been installed
-if hiarchy-cmd-missing supergfxctl; then
+if ! hiarchy-cmd-present supergfxctl; then
   hiarchy-pkg-add supergfxctl
   sudo systemctl enable supergfxd
 

@@ -3,7 +3,7 @@
 set -e
 echo -e "\e[32mUpdate Firmware\e[0m"
 
-if hiarchy-cmd-missing fwupdmgr; then
+if ! hiarchy-cmd-present fwupdmgr; then
   hiarchy-pkg-add fwupd
 fi
 
