@@ -1,0 +1,15 @@
+#!/bin/bash
+
+MONITOR_CONF="$HOME/.config/hiarchy/current/monitor.conf"
+mkdir -p "$(dirname "$MONITOR_CONF")"
+
+if hyprctl monitors | grep -q "Microstep MSI MAG 275QF"; then
+    ACTIVE_MAIN="desc:Microstep MSI MAG 275QF CE2M124701089"
+else
+    ACTIVE_MAIN="eDP-1"
+fi
+
+echo "\$main_monitor = $ACTIVE_MAIN" > "$MONITOR_CONF"
+
+hiarchy-restart-hyprctl
+hyprctl dispatch moveworkspacetomonitor 1 "$ACTIVE_MAIN"

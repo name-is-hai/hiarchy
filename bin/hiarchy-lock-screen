@@ -1,21 +1,6 @@
 #!/bin/bash
 
 # Locks the system using hyprlock, and the screensaver stopped.
-# Define where we want to save the dynamic variable
-MONITOR_CONF="$HOME/.config/hiarchy/current/monitor.conf"
-
-# Ensure the directory exists
-mkdir -p "$(dirname "$MONITOR_CONF")"
-
-# Check if the MSI monitor is currently connected and active
-if hyprctl monitors | grep -q "Microstep MSI MAG 275QF"; then
-    # MSI is connected -> Make MSI the main monitor
-    echo "\$main_monitor = desc:Microstep MSI MAG 275QF CE2M124701089" > "$MONITOR_CONF"
-else
-    # Acer is connected OR only the laptop is connected -> Make eDP-1 the main monitor
-    echo "\$main_monitor = eDP-1" > "$MONITOR_CONF"
-fi
-
 # Lock the screen
 pidof hyprlock || hyprlock &
 

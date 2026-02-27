@@ -98,7 +98,7 @@
 - [ ] Use hyprshot for screenshots and remove bin/hiarchy-cmd-screenshot
 - [ ] Add Windows 11-style screenshot UI
 - [ ] Add screenshot style selector
-
+- [x] Add main monitor detect (hdmi-hotplug, hiarchy-main-monitor-detect)
 ---
 
 ## 🎨 Theming
