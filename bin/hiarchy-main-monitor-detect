@@ -1,15 +1,40 @@
 #!/bin/bash
 
-MONITOR_CONF="$HOME/.config/hiarchy/current/monitor.conf"
-mkdir -p "$(dirname "$MONITOR_CONF")"
+SCRIPT_OWNER=$(stat -c '%U' "$0")
+USER_UID=$(id -u "$SCRIPT_OWNER")
+USER_HOME=$(eval echo "~$SCRIPT_OWNER")
+MONITOR_CONF="$USER_HOME/.config/hiarchy/current/monitor.conf"
 
-if hyprctl monitors | grep -q "Microstep MSI MAG 275QF"; then
+update_monitor() {
+  # 1. SELF-HEALING ENVIRONMENT: If Hyprland variables are missing, find them!
+  if [ -z "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
+    export XDG_RUNTIME_DIR="/run/user/$USER_UID"
+    export HYPRLAND_INSTANCE_SIGNATURE=$(ls -1 "/run/user/$USER_UID/hypr" 2>/dev/null | head -n 1)
+  fi
+
+  mkdir -p "$(dirname "$MONITOR_CONF")"
+
+  # 2. Check if your MSI monitor is plugged in (-q makes grep silent)
+  if hyprctl monitors | grep -q "Microstep MSI MAG 275QF"; then
     ACTIVE_MAIN="desc:Microstep MSI MAG 275QF CE2M124701089"
-else
+  else
     ACTIVE_MAIN="eDP-1"
+  fi
+
+  # 3. Write to the config
+  echo "\$main_monitor = $ACTIVE_MAIN" > "$MONITOR_CONF"
+
+  # 4. Reload and move workspaces
+  bash "$USER_HOME/.local/share/hiarchy/bin/hiarchy-restart-hyprctl"
+  hyprctl dispatch moveworkspacetomonitor 1 "$ACTIVE_MAIN"
+}
+
+
+if [ "$EUID" -eq 0 ]; then
+  # If triggered by udev (root), escape via systemd-run.
+  # We just tell systemd to run THIS script again as the user.
+  exec systemd-run --uid="$SCRIPT_OWNER" "$0"
+else
+  # If run by the user (normal execution, or testing with 'su - liam')
+  update_monitor
 fi
-
-echo "\$main_monitor = $ACTIVE_MAIN" > "$MONITOR_CONF"
-
-hiarchy-restart-hyprctl
-hyprctl dispatch moveworkspacetomonitor 1 "$ACTIVE_MAIN"
