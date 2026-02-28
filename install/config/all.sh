@@ -29,6 +29,7 @@ run_logged $HIARCHY_INSTALL/config/hardware/usb-autosuspend.sh
 run_logged $HIARCHY_INSTALL/config/hardware/ignore-power-button.sh
 # run_logged $HIARCHY_INSTALL/config/hardware/legacy-gpu-terminal.sh
 run_logged $HIARCHY_INSTALL/config/hardware/nvidia.sh
+run_logged $HIARCHY_INSTALL/config/hardware/hdmi-hotplug.sh
 run_logged $HIARCHY_INSTALL/config/hardware/fix-f13-amd-audio-input.sh
 # run_logged $HIARCHY_INSTALL/config/hardware/fix-bcm43xx.sh
 # run_logged $HIARCHY_INSTALL/config/hardware/fix-apple-spi-keyboard.sh
