@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Check the current mode in the config file
+if pgrep -x hiarchy-waybar-auto-hide; then
+
+    pkill -f "hiarchy-waybar-auto-hide"
+
+    notify-send "Waybar" "Auto-hide: OFF (Docked)"
+else
+    uwsm-app -- hiarchy-waybar-auto-hide --side top >/dev/null 2>&1 &
+
+    notify-send "Waybar" "Auto-hide: ON (Floating)"
+fi
+
+if pgrep -x waybar >/dev/null; then
+  pkill -x waybar
+fi
+uwsm-app -- waybar >/dev/null 2>&1 &
