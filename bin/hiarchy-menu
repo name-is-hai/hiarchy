@@ -173,7 +173,7 @@ show_style_menu() {
   *Theme*) show_theme_menu ;;
   *Font*) show_font_menu ;;
   *Background*) hiarchy-theme-bg-next ;;
-  *Hyprland*) open_in_editor ~/.config/hypr/looknfeel.conf ;;
+  *Hyprland*) open_in_editor $HIARCHY_PATH/default/hypr/looknfeel.conf ;;
   *Screensaver*) open_in_editor ~/.local/share/hiarchy/logo.txt ;;
   *About*) open_in_editor ~/.local/share/hiarchy/icon.txt ;;
   *) show_main_menu ;;
@@ -195,8 +195,8 @@ show_font_menu() {
 
 show_setup_menu() {
   local options="  Audio\n  Wifi\n󰂯  Bluetooth\n󱐋  Power Profile\n  System Sleep\n󰍹  Monitors"
-  [ -f ~/.config/hypr/bindings.conf ] && options="$options\n  Keybindings"
-  [ -f ~/.config/hypr/input.conf ] && options="$options\n  Input"
+  [ -f "$HIARCHY_PATH/default/hypr/bindings.conf" ] && options="$options\n  Keybindings"
+  [ -f "$HIARCHY_PATH/default/hypr/input.conf" ] && options="$options\n  Input"
   options="$options\n󰱔  DNS\n  Security\n  Config"
 
   case $(menu "Setup" "$options") in
@@ -205,9 +205,9 @@ show_setup_menu() {
   *Bluetooth*) hiarchy-launch-bluetooth ;;
   *Power*) show_setup_power_menu ;;
   *System*) show_setup_system_menu ;;
-  *Monitors*) open_in_editor ~/.config/hypr/monitors.conf ;;
-  *Keybindings*) open_in_editor ~/.config/hypr/bindings.conf ;;
-  *Input*) open_in_editor ~/.config/hypr/input.conf ;;
+  *Monitors*) open_in_editor $HIARCHY_PATH/default/hypr/monitors.conf ;;
+  *Keybindings*) open_in_editor $HIARCHY_PATH/default/hypr/bindings.conf ;;
+  *Input*) open_in_editor $HIARCHY_PATH/default/hypr/input.conf ;;
   *DNS*) present_terminal hiarchy-setup-dns ;;
   *Security*) show_setup_security_menu ;;
   *Config*) show_setup_config_menu ;;
@@ -235,14 +235,14 @@ show_setup_security_menu() {
 
 show_setup_config_menu() {
   case $(menu "Setup" "  Defaults\n  Hyprland\n  Hypridle\n  Hyprlock\n  Hyprsunset\n  Swayosd\n󰌧  Walker\n󰍜  Waybar\n󰞅  XCompose") in
-  *Defaults*) open_in_editor ~/.config/uwsm/default ;;
-  *Hyprland*) open_in_editor ~/.config/hypr/hyprland.conf ;;
-  *Hypridle*) open_in_editor ~/.config/hypr/hypridle.conf && hiarchy-restart-hypridle ;;
-  *Hyprlock*) open_in_editor ~/.config/hypr/hyprlock.conf ;;
-  *Hyprsunset*) open_in_editor ~/.config/hypr/hyprsunset.conf && hiarchy-restart-hyprsunset ;;
-  *Swayosd*) open_in_editor ~/.config/swayosd/config.toml && hiarchy-restart-swayosd ;;
-  *Walker*) open_in_editor ~/.config/walker/config.toml && hiarchy-restart-walker ;;
-  *Waybar*) open_in_editor ~/.config/waybar/config.jsonc && hiarchy-restart-waybar ;;
+  *Defaults*) open_in_editor $HIARCHY_PATH/default/uwsm/default ;;
+  *Hyprland*) open_in_editor $HIARCHY_PATH/default/hypr/hyprland.conf ;;
+  *Hypridle*) open_in_editor $HIARCHY_PATH/default/hypr/hypridle.conf && hiarchy-restart-hypridle ;;
+  *Hyprlock*) open_in_editor $HIARCHY_PATH/default/hypr/hyprlock.conf ;;
+  *Hyprsunset*) open_in_editor $HIARCHY_PATH/default/hypr/hyprsunset.conf && hiarchy-restart-hyprsunset ;;
+  *Swayosd*) open_in_editor $HIARCHY_PATH/default/swayosd/config.toml && hiarchy-restart-swayosd ;;
+  *Walker*) open_in_editor $HIARCHY_PATH/default/walker/config.toml && hiarchy-restart-walker ;;
+  *Waybar*) open_in_editor $HIARCHY_PATH/default/waybar/config.jsonc && hiarchy-restart-waybar ;;
   *XCompose*) open_in_editor ~/.XCompose && hiarchy-restart-xcompose ;;
   *) show_setup_menu ;;
   esac

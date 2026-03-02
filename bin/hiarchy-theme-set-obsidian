@@ -23,5 +23,5 @@ jq -r '.vaults | values[].path' ~/.config/obsidian/obsidian.json 2>/dev/null | w
 }
 EOF
 
-  cp "$CURRENT_THEME_DIR/obsidian.css" "$theme_dir/theme.css"
+  ln -sf "$CURRENT_THEME_DIR/obsidian.css" "$theme_dir/theme.css"
 done

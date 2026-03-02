@@ -1,16 +1,17 @@
 #!/bin/bash
 set -e
 
-# Overwrite all user configs with the Hiarchy defaults.
+# Overwrite all user configs with the Hiarchy defaults using GNU Stow.
 
 if [ "$EUID" -eq 0 ]; then
   echo "Error: This script should not be run as root"
   exit 1
 fi
 
-echo "Resetting all Hiarchy configs"
-cp -R ~/.local/share/hiarchy/config/* ~/.config/
-cp ~/.local/share/hiarchy/default/zshrc ~/.zshrc
+echo "Resetting all Hiarchy configs using GNU Stow..."
+# We call the central config script which handles stowing and exclusions
+bash "$HIARCHY_PATH/install/config/config.sh"
+
 echo '[[ -f ~/.zshrc ]] && . ~/.zshrc' | tee ~/.zsh_profile >/dev/null
 
 $(bash $HIARCHY_PATH/install/config/theme.sh)

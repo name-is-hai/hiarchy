@@ -1,0 +1,46 @@
+# Get default route interfaces, preferring non-tunnel interfaces
+INTERFACE=$(ip route | awk '/^default/ {print $5}' | grep -vE '^(tun|tap|vpn|ppp|wg)' | head -n 1)
+
+# Fallback to first default route
+if [[ -z "$INTERFACE" ]]; then
+  INTERFACE=$(ip route | awk '/^default/ {print $5}' | head -n 1)
+fi
+
+# Validate interface
+if [[ -z "$INTERFACE" ]] || [[ ! -d "/sys/class/net/$INTERFACE" ]]; then
+  echo "⇣ 0.00 Kbps ⇡ 0.00 Kbps"
+  exit 0
+fi
+
+# Validate stats files
+RX_FILE="/sys/class/net/$INTERFACE/statistics/rx_bytes"
+TX_FILE="/sys/class/net/$INTERFACE/statistics/tx_bytes"
+
+if [[ ! -f "$RX_FILE" ]] || [[ ! -f "$TX_FILE" ]]; then
+  echo "⇣ 0.00 Kbps ⇡ 0.00 Kbps"
+  exit 0
+fi
+
+RX_PREV=$(<"$RX_FILE")
+TX_PREV=$(<"$TX_FILE")
+sleep 1
+RX_CURR=$(<"$RX_FILE")
+TX_CURR=$(<"$TX_FILE")
+
+RX_DIFF=$((RX_CURR - RX_PREV))
+TX_DIFF=$((TX_CURR - TX_PREV))
+
+awk -v rx="$RX_DIFF" -v tx="$TX_DIFF" '
+function human(bps) {
+    if (bps >= 1000000000)
+        return sprintf("%.2f Gbps", bps/1000000000)
+    else if (bps >= 1000000)
+        return sprintf("%.2f Mbps", bps/1000000)
+    else
+        return sprintf("%.2f Kbps", bps/1000)
+}
+BEGIN {
+    rx_bps = rx * 8
+    tx_bps = tx * 8
+    printf "⇣ %s ⇡ %s\n", human(rx_bps), human(tx_bps)
+}'

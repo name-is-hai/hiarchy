@@ -10,7 +10,9 @@ echo "Resetting limine config"
 
 sudo mv /boot/limine.conf /boot/limine.conf.bak
 
-sudo cp ~/.local/share/hiarchy/default/limine/limine.conf /boot/limine.conf
+# Try to symlink first, fallback to copy if /boot is vfat
+sudo ln -sf ~/.local/share/hiarchy/default/limine/limine.conf /boot/limine.conf 2>/dev/null || \
+  sudo cp ~/.local/share/hiarchy/default/limine/limine.conf /boot/limine.conf
 
 sudo limine-update
 sudo limine-snapper-sync

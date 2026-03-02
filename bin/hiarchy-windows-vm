@@ -43,7 +43,7 @@ install_windows() {
 
   # Install Windows VM icon and desktop file
   if [ -f "$HIARCHY_PATH/applications/icons/windows.png" ]; then
-    cp "$HIARCHY_PATH/applications/icons/windows.png" "$HOME/.local/share/applications/icons/windows.png"
+    ln -sf "$HIARCHY_PATH/applications/icons/windows.png" "$HOME/.local/share/applications/icons/windows.png"
   fi
 
   cat << EOF | tee "$HOME/.local/share/applications/windows-vm.desktop" > /dev/null

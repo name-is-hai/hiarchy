@@ -152,7 +152,6 @@ tree-sitter-cli
 ttf-cascadia-mono-nerd
 ttf-ia-writer
 ttf-jetbrains-mono-nerd
-typora
 tzupdate
 ufw
 ufw-docker
@@ -182,6 +181,7 @@ zram-generator
 visual-studio-code-bin
 zsh
 zinit
+stow
 
 # MacBook support
 # asdcontrol

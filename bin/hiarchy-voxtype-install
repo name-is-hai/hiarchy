@@ -7,8 +7,7 @@ if gum confirm "Install Voxtype + AI model (~150MB) to enable dictation?"; then
   hiarchy-pkg-add wtype voxtype-bin
 
   # Setup voxtype
-  mkdir -p ~/.config/voxtype
-  cp $HIARCHY_PATH/default/voxtype/config.toml ~/.config/voxtype/
+  hiarchy-refresh-config voxtype/
 
   voxtype setup --download --no-post-install
   voxtype setup systemd

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Copies the named config from ~/.local/share/hiarchy/config/X/Y/Z -> ~/.config/X/Y/Z.
-# If the config already exists, a backup of the existing will be taken as .bak.TIMESTAMP.
+# Symlinks the named config component from ~/.local/share/hiarchy/default/ to ~/.config/ using GNU Stow.
+# If the config already exists and is not a link, a backup will be taken as .bak.TIMESTAMP.
 
 config_file=$1
 
@@ -9,34 +9,32 @@ if [[ -z "$config_file" ]]; then
   cat <<USAGE
   Usage: $0 [config_file]
 
-  Must provide a file path from the .config directory to be refreshed.
-  To copy ~/.local/share/hiarchy/config/hypr/hyprlock.conf to ~/.config/hypr/hyprlock.conf
-
-    $0 hypr/hyprlock.conf
+  Must provide a file path or directory from the .config directory to be refreshed.
+  Example: To refresh hyprland configs:
+    $0 hypr/hyprland.conf
 USAGE
   exit 1
 fi
 
-# Backup the destination file (with timestamp) to avoid clobbering (Ex: hyprlock.conf.bak.1753817951)
-user_config_file="${HOME}/.config/$config_file"
-default_config_file="${HOME}/.local/share/hiarchy/config/$config_file"
-backup_config_file="$user_config_file.bak.$(date +%s)"
+HIARCHY_PATH="${HIARCHY_PATH:-$HOME/.local/share/hiarchy}"
+DEFAULT_DIR="$HIARCHY_PATH/default"
+TARGET_CONFIG="$HOME/.config"
 
-if [[ -f "$user_config_file" ]]; then
-  # Create preliminary backup
-  cp -f "$user_config_file" "$backup_config_file" 2>/dev/null
+# Identify the "package" (top-level directory or file name)
+PACKAGE=$(echo "$config_file" | cut -d/ -f1)
 
-  # Replace config with new default
-  cp -f "$default_config_file" "$user_config_file" 2>/dev/null
-
-  # Compare and delete/inform accordingly
-  if cmp -s "$user_config_file" "$backup_config_file"; then
-    rm "$backup_config_file"
-  else
-    echo -e "\e[31mReplaced $user_config_file with new Hiarchy default.\nSaved backup as ${backup_config_file}.\n\n\e[32mChanges:\e[0m"
-    diff "$user_config_file" "$backup_config_file" || true
-  fi
-else
-  # Config file did not exist already
-  cp -f "$default_config_file" "$user_config_file" 2>/dev/null
+if [[ ! -e "$DEFAULT_DIR/$PACKAGE" ]]; then
+  echo "Error: Package '$PACKAGE' not found in $DEFAULT_DIR"
+  exit 1
 fi
+
+# Backup existing if it's a real directory/file to avoid Stow conflicts
+target="$TARGET_CONFIG/$PACKAGE"
+if [[ -e "$target" && ! -L "$target" ]]; then
+  backup="$target.bak.$(date +%s)"
+  echo "Backing up existing: $target -> $backup"
+  mv "$target" "$backup"
+fi
+
+echo "Refreshing '$PACKAGE' configuration..."
+stow -R -v --no-folding -t "$TARGET_CONFIG" -d "$DEFAULT_DIR" "$PACKAGE"

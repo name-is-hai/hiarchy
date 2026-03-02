@@ -3,4 +3,4 @@
 # Returns the name of the current monospace font being used by extracting it from the Waybar stylesheet.
 # This can be changed using hiarchy-font-set.
 
-grep -oP 'font-family:\s*["'\'']?\K[^;"'\'']+' ~/.config/waybar/style.css | head -n1
+grep -oP 'font-family:\s*["'\'']?\K[^;"'\'']+' "$HIARCHY_PATH/default/waybar/style.css" | head -n1

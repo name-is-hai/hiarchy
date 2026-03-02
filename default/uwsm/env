@@ -5,4 +5,4 @@ export HIARCHY_PATH=$HOME/.local/share/hiarchy
 export PATH=$HIARCHY_PATH/bin:$PATH
 
 # Set default terminal and editor
-source ~/.config/uwsm/default
+source "$HIARCHY_PATH/default/uwsm/default"

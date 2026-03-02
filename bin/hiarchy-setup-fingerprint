@@ -57,14 +57,14 @@ EOF
 
 add_hyprlock_fingerprint_icon() {
   print_info "Adding fingerprint icon to hyprlock placeholder text..."
-  sed -i 's/placeholder_text = .*/placeholder_text = <span> Enter Password 󰈷 <\/span>/' ~/.config/hypr/hyprlock.conf
-  sed -i 's/fingerprint:enabled = .*/fingerprint:enabled = true/' ~/.config/hypr/hyprlock.conf
+  sed -i 's/placeholder_text = .*/placeholder_text = <span> Enter Password 󰈷 <\/span>/' $HIARCHY_PATH/default/hypr/hyprlock.conf
+  sed -i 's/fingerprint:enabled = .*/fingerprint:enabled = true/' $HIARCHY_PATH/default/hypr/hyprlock.conf
 }
 
 remove_hyprlock_fingerprint_icon() {
   print_info "Removing fingerprint icon from hyprlock placeholder text..."
-  sed -i 's/placeholder_text = .*/placeholder_text = Enter Password/' ~/.config/hypr/hyprlock.conf
-  sed -i 's/fingerprint:enabled = .*/fingerprint:enabled = false/' ~/.config/hypr/hyprlock.conf
+  sed -i 's/placeholder_text = .*/placeholder_text = Enter Password/' $HIARCHY_PATH/default/hypr/hyprlock.conf
+  sed -i 's/fingerprint:enabled = .*/fingerprint:enabled = false/' $HIARCHY_PATH/default/hypr/hyprlock.conf
 }
 
 remove_pam_config() {

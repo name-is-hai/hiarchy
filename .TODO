@@ -39,8 +39,10 @@
 - [x] Remove hiarchy-version-channel
 - [x] Remove hiarchy-webapp-handler-hey
 - [x] Remove hiarchy-webapp-handler-zoom
+- [x] Remove hiarchy-cmd-missing
 - [x] Remove 1password
 - [x] Remove tmux
+- [x] Remove typora
 
 ---
 
@@ -72,7 +74,7 @@
 - [x] Update hiarchy-refresh-pacman → stable only
 - [x] Update install/hiarchy-base.packages (maybe remove hiarchy-nvim, hiarchy-walker)
 - [x] Update base-devel
-- [ ] Create package install flow for yay packages
+- [x] Create package install flow for yay packages
 
 ### Install / Config
 - [x] Update install/config/config.sh → use .zshrc

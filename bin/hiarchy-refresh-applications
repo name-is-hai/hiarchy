@@ -1,16 +1,22 @@
 #!/bin/bash
 
-# Ensure all default .desktop, web apps, and TUIs are installed.
+# Ensure all default .desktop, web apps, and TUIs are installed using symlinks.
 
-# Copy and sync icon files
+# Link icon files
 mkdir -p ~/.local/share/icons/hicolor/48x48/apps/
-cp ~/.local/share/hiarchy/applications/icons/*.png ~/.local/share/icons/hicolor/48x48/apps/
+for icon in ~/.local/share/hiarchy/applications/icons/*.png; do
+  ln -sf "$icon" ~/.local/share/icons/hicolor/48x48/apps/
+done
 gtk-update-icon-cache ~/.local/share/icons/hicolor &>/dev/null
 
-# Copy .desktop declarations
+# Link .desktop declarations
 mkdir -p ~/.local/share/applications
-cp ~/.local/share/hiarchy/applications/*.desktop ~/.local/share/applications/
-cp ~/.local/share/hiarchy/applications/hidden/*.desktop ~/.local/share/applications/
+for desktop in ~/.local/share/hiarchy/applications/*.desktop; do
+  ln -sf "$desktop" ~/.local/share/applications/
+done
+for hidden_desktop in ~/.local/share/hiarchy/applications/hidden/*.desktop; do
+  ln -sf "$hidden_desktop" ~/.local/share/applications/
+done
 
 # Refresh the webapps and TUIs
 bash $HIARCHY_PATH/install/packaging/icons.sh
