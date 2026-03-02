@@ -56,7 +56,6 @@ hiarchy-theme-set-gnome
 hiarchy-theme-set-browser
 hiarchy-theme-set-vscode
 hiarchy-theme-set-obsidian
-# hiarchy-theme-set-asusctl
 
 # Call hook on theme set
 hiarchy-hook theme-set "$THEME_NAME"
