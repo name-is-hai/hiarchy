@@ -1,9 +1,12 @@
 #!/bin/bash
 
-# Overwrite the user config for the Plymouth drive decryption and boot sequence with the Hiarchy default and rebuild it.
+# Overwrite the user config for the Plymouth drive decryption and boot sequence with the Hiarchy default using symlinks.
+
+# Ensure HIARCHY_PATH is set
+HIARCHY_PATH="${HIARCHY_PATH:-$HOME/.local/share/hiarchy}"
 
 sudo rm -rf /usr/share/plymouth/themes/hiarchy
-sudo ln -sf ~/.local/share/hiarchy/default/plymouth /usr/share/plymouth/themes/hiarchy
+sudo ln -sf "$HIARCHY_PATH/default/plymouth" /usr/share/plymouth/themes/hiarchy
 sudo plymouth-set-default-theme hiarchy
 
 if command -v limine-mkinitcpio &>/dev/null; then

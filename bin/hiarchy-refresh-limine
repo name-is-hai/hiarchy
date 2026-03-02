@@ -1,18 +1,24 @@
 #!/bin/bash
 
-# Overwrite the user config for the Limine bootloader and rebuild it.
+# Overwrite the user config for the Limine bootloader and rebuild it using symlinks where possible.
 
 if [[ -f /boot/EFI/Linux/hiarchy_linux.efi ]] && [[ -f /boot/EFI/Linux/$(cat /etc/machine-id)_linux.efi ]]; then
   echo "Cleanup extra UKI"
   sudo rm -f /boot/EFI/Linux/$(cat /etc/machine-id)_linux.efi
 fi
+
 echo "Resetting limine config"
 
-sudo mv /boot/limine.conf /boot/limine.conf.bak
+# Ensure HIARCHY_PATH is set
+HIARCHY_PATH="${HIARCHY_PATH:-$HOME/.local/share/hiarchy}"
 
-# Try to symlink first, fallback to copy if /boot is vfat
-sudo ln -sf ~/.local/share/hiarchy/default/limine/limine.conf /boot/limine.conf 2>/dev/null || \
-  sudo cp ~/.local/share/hiarchy/default/limine/limine.conf /boot/limine.conf
+if [[ -f /boot/limine.conf && ! -L /boot/limine.conf ]]; then
+  sudo mv /boot/limine.conf /boot/limine.conf.bak
+fi
+
+# Try to symlink first, fallback to copy if /boot is vfat. Use absolute path for link target.
+sudo ln -sf "$HIARCHY_PATH/default/limine/limine.conf" /boot/limine.conf 2>/dev/null || \
+  sudo cp "$HIARCHY_PATH/default/limine/limine.conf" /boot/limine.conf
 
 sudo limine-update
 sudo limine-snapper-sync

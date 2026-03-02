@@ -29,7 +29,11 @@ EOF
 
   CMDLINE=$(grep "^[[:space:]]*cmdline:" "$limine_config" | head -1 | sed 's/^[[:space:]]*cmdline:[[:space:]]*//')
 
-  sudo cp $HIARCHY_PATH/default/limine/default.conf /etc/default/limine
+  # Ensure HIARCHY_PATH is set correctly
+  HIARCHY_PATH="${HIARCHY_PATH:-$HOME/.local/share/hiarchy}"
+
+  # Copy the default config template and modify it (not a symlink, as it becomes machine-specific)
+  sudo cp "$HIARCHY_PATH/default/limine/default.conf" /etc/default/limine
   sudo sed -i "s|@@CMDLINE@@|$CMDLINE|g" /etc/default/limine
 
   # UKI and EFI fallback are EFI only
@@ -43,7 +47,9 @@ EOF
   fi
 
   # We overwrite the whole thing knowing the limine-update will add the entries for us
-  sudo cp $HIARCHY_PATH/default/limine/limine.conf /boot/limine.conf
+  # Try to symlink first, fallback to copy if /boot is vfat. Use absolute path for link target.
+  sudo ln -sf "$HIARCHY_PATH/default/limine/limine.conf" /boot/limine.conf 2>/dev/null || \
+    sudo cp "$HIARCHY_PATH/default/limine/limine.conf" /boot/limine.conf
 
 
   # Match Snapper configs if not installing from the ISO
