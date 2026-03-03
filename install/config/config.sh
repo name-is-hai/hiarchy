@@ -43,6 +43,8 @@ for name in "${STOW_ITEMS[@]}"; do
   target="$TARGET_CONFIG/$name"
   if [[ -e "$target" && ! -L "$target" ]]; then
     echo "Backing up existing directory: $target -> $target.bak"
+    # Delete the old backup to prevent nested folder inception!
+    rm -rf "$target.bak"
     mv "$target" "$target.bak"
   fi
 done
@@ -60,9 +62,11 @@ fi
 
 # 2. Handle Loose Files (starship.toml, brave-flags.conf, etc.)
 for file in "${LOOSE_FILES[@]}"; do
-  target="$TARGET_CONFIG/$file"
+target="$TARGET_CONFIG/$file"
   if [[ -e "$target" && ! -L "$target" ]]; then
     echo "Backing up existing file: $target -> $target.bak"
+    # Delete the old backup file
+    rm -f "$target.bak"
     mv "$target" "$target.bak"
   fi
   echo "Linking loose file: $file..."
