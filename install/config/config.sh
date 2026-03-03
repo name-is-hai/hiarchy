@@ -47,6 +47,11 @@ for name in "${STOW_ITEMS[@]}"; do
     rm -rf "$target.bak"
     mv "$target" "$target.bak"
   fi
+  # Create an empty target directory so Stow has a box to put the files in
+  mkdir -p "$target"
+
+  # Run Stow specifically for THIS package, aiming at THIS specific folder
+  stow -R -v --no-folding -t "$target" -d "$DEFAULT_DIR" "$name"
 done
 
 # Run stow for the discovered items
