@@ -36,7 +36,7 @@ run_logged $HIARCHY_INSTALL/config/hardware/fix-f13-amd-audio-input.sh
 # run_logged $HIARCHY_INSTALL/config/hardware/fix-apple-suspend-nvme.sh
 # run_logged $HIARCHY_INSTALL/config/hardware/fix-apple-t2.sh
 run_logged $HIARCHY_INSTALL/config/hardware/fix-surface-keyboard.sh
-run_logged $HIARCHY_INSTALL/config/hardware/fix-asus-rog-audio-mixer.sh
-run_logged $HIARCHY_INSTALL/config/hardware/fix-asus-rog-mic.sh
+# run_logged $HIARCHY_INSTALL/config/hardware/fix-asus-rog-audio-mixer.sh
+# run_logged $HIARCHY_INSTALL/config/hardware/fix-asus-rog-mic.sh
 run_logged $HIARCHY_INSTALL/config/hardware/fix-yt6801-ethernet-adapter.sh
 run_logged $HIARCHY_INSTALL/config/hardware/fix-synaptic-touchpad.sh

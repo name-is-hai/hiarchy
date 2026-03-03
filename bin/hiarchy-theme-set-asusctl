@@ -1,7 +1,0 @@
-#!/bin/bash
-
-ASUSCTL_THEME=~/.config/hiarchy/current/theme/asusctl.rgb
-
-if hiarchy-cmd-present asusctl; then
-  asusctl aura effect static -c $(sed 's/^#//' $ASUSCTL_THEME)
-fi
