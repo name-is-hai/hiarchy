@@ -30,12 +30,5 @@ cd ~/.local/share/hiarchy
 git fetch origin "${HIARCHY_REF}" && git checkout "${HIARCHY_REF}"
 cd -
 
-# Set edge mirror for dev installs
-if [[ $HIARCHY_REF == "dev" ]]; then
-  export HIARCHY_MIRROR=edge
-else
-  export HIARCHY_MIRROR=stable
-fi
-
 echo -e "\nInstallation starting..."
 source ~/.local/share/hiarchy/install.sh
