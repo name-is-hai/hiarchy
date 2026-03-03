@@ -14,11 +14,15 @@ update_monitor() {
 
   mkdir -p "$(dirname "$MONITOR_CONF")"
 
-  # 2. Check if your MSI monitor is plugged in (-q makes grep silent)
-  if hyprctl monitors | grep -q "Microstep MSI MAG 275QF"; then
-    ACTIVE_MAIN="desc:Microstep MSI MAG 275QF CE2M124701089"
+  # 2. Extract monitor details dynamically using jq (-r returns raw text without quotes)
+  MSI_DESC=$(hyprctl monitors -j | jq -r '.[] | select(.description | contains("MSI MAG 275QF")) | .description')
+
+  if [ -n "$MSI_DESC" ]; then
+    # The MSI monitor is found! Prepend 'desc:' to the exact string jq found
+    ACTIVE_MAIN="desc:$MSI_DESC"
   else
-    ACTIVE_MAIN="eDP-1"
+    # Fallback: Grab the 'name' (e.g., eDP-1) of whichever monitor currently holds ID 0
+    ACTIVE_MAIN=$(hyprctl monitors -j | jq -r '.[] | select(.id == 0) | .name')
   fi
 
   # 3. Write to the config
