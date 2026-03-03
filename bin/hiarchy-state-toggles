@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Manage toggle states for Hiarchy
+# Usage:
+#   hiarchy-state-toggles set <name> <value>
+#   hiarchy-state-toggles get <name>
+#   hiarchy-state-toggles clear <name>
+
+STATE_DIR="$HOME/.local/state/hiarchy/toggles"
+mkdir -p "$STATE_DIR"
+
+COMMAND="$1"
+STATE_VALUE="$2"
+
+STATE_FILE="$STATE_DIR/$STATE_VALUE"
+
+case "$COMMAND" in
+  set)
+    if [[ -z "$STATE_VALUE" ]]; then
+    echo "Usage:"
+    echo "  hiarchy-state-toggles set <name> <value>"
+    echo "  hiarchy-state-toggles get <name>"
+    echo "  hiarchy-state-toggles clear <name>"
+    exit 1
+    fi
+    touch $STATE_FILE
+    ;;
+
+  get)
+    shopt -s nullglob
+    files=("$STATE_DIR"/*)
+
+    if (( ${#files[@]} == 0 )); then
+      echo "undefined"
+      exit 1
+    fi
+
+    for file in "${files[@]}"; do
+      basename "$file"
+    done
+    ;;
+
+  clear)
+    rm -f "$STATE_FILE"
+    ;;
+
+  *)
+    echo "Usage:"
+    echo "  hiarchy-state-toggles set <name> <value>"
+    echo "  hiarchy-state-toggles get <name>"
+    echo "  hiarchy-state-toggles clear <name>"
+    exit 1
+    ;;
+esac
