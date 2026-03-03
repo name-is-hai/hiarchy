@@ -11,41 +11,6 @@ EOF
   # Detect boot mode
   [[ -d /sys/firmware/efi ]] && EFI=true
 
-  # Find config location
-  if [[ -f /boot/EFI/arch-limine/limine.conf ]]; then
-    limine_config="/boot/EFI/arch-limine/limine.conf"
-  elif [[ -f /boot/EFI/BOOT/limine.conf ]]; then
-    limine_config="/boot/EFI/BOOT/limine.conf"
-  elif [[ -f /boot/EFI/limine/limine.conf ]]; then
-    limine_config="/boot/EFI/limine/limine.conf"
-  elif [[ -f /boot/limine/limine.conf ]]; then
-    limine_config="/boot/limine/limine.conf"
-  elif [[ -f /boot/limine.conf ]]; then
-    limine_config="/boot/limine.conf"
-  else
-    echo "Error: Limine config not found" >&2
-    exit 1
-  fi
-
-  CMDLINE=$(grep "^[[:space:]]*cmdline:" "$limine_config" | head -1 | sed 's/^[[:space:]]*cmdline:[[:space:]]*//')
-
-  sudo cp $HIARCHY_PATH/default/limine/default.conf /etc/default/limine
-  sudo sed -i "s|@@CMDLINE@@|$CMDLINE|g" /etc/default/limine
-
-  # UKI and EFI fallback are EFI only
-  if [[ -z $EFI ]]; then
-    sudo sed -i '/^ENABLE_UKI=/d; /^ENABLE_LIMINE_FALLBACK=/d' /etc/default/limine
-  fi
-
-  # Remove the original config file if it's not /boot/limine.conf
-  if [[ "$limine_config" != "/boot/limine.conf" ]] && [[ -f "$limine_config" ]]; then
-    sudo rm "$limine_config"
-  fi
-
-  # We overwrite the whole thing knowing the limine-update will add the entries for us
-  sudo cp $HIARCHY_PATH/default/limine/limine.conf /boot/limine.conf
-
-
   # Match Snapper configs if not installing from the ISO
   if [[ -z ${HIARCHY_CHROOT_INSTALL:-} ]]; then
     if ! sudo snapper list-configs 2>/dev/null | grep -q "root"; then
