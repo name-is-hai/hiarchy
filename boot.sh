@@ -18,17 +18,12 @@ sudo pacman -Syu --noconfirm --needed base-devel git
 
 # Use custom repo if specified, otherwise default to name-is-hai/hiarchy
 HIARCHY_REPO="${HIARCHY_REPO:-name-is-hai/hiarchy}"
+HIARCHY_REF="${HIARCHY_REF:-hirachy}"
 
+echo -e "\e[32mUsing branch: $HIARCHY_REF\e[0m"
 echo -e "\nCloning Hiarchy from: https://github.com/${HIARCHY_REPO}.git"
 rm -rf ~/.local/share/hiarchy/
-git clone "https://github.com/${HIARCHY_REPO}.git" --depth=1 ~/.local/share/hiarchy >/dev/null
-
-# Use custom branch if instructed, otherwise default to master
-HIARCHY_REF="${HIARCHY_REF:-hirachy}"
-echo -e "\e[32mUsing branch: $HIARCHY_REF\e[0m"
-cd ~/.local/share/hiarchy
-git fetch origin "${HIARCHY_REF}" && git checkout "${HIARCHY_REF}"
-cd -
+git clone -b $HIARCHY_REF --single-branch "https://github.com/${HIARCHY_REPO}.git" --depth=1 ~/.local/share/hiarchy >/dev/null
 
 echo -e "\nInstallation starting..."
 source ~/.local/share/hiarchy/install.sh
