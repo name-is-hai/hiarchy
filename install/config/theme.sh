@@ -14,7 +14,7 @@ mkdir -p ~/.config/btop/themes
 ln -snf ~/.config/hiarchy/current/theme/btop.theme ~/.config/btop/themes/current.theme
 
 mkdir -p ~/.config/mako
-ln -snf ~/.config/hiarchy/current/theme/mako.ini ~/.config/mako/config
+ln -snf ~/.config/hiarchy/current/theme/mako.ini ~/.config/mako/config/mako.ini
 
 # Add managed policy directories for Chromium for theme changes
 sudo mkdir -p /etc/chromium/policies/managed

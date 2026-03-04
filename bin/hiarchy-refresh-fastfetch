@@ -2,4 +2,4 @@
 
 # Overwrite the user config for fastfetch with the Hiarchy default.
 
-hiarchy-refresh-config fastfetch/config.jsonc
+hiarchy-refresh-config fastfetch

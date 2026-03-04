@@ -9,12 +9,9 @@ if [ "$EUID" -eq 0 ]; then
 fi
 
 echo "Resetting all Hiarchy configs"
-cp -R ~/.local/share/hiarchy/config/* ~/.config/
-cp ~/.local/share/hiarchy/default/zshrc ~/.zshrc
-echo '[[ -f ~/.zshrc ]] && . ~/.zshrc' | tee ~/.zsh_profile >/dev/null
-
+$(bash $HIARCHY_PATH/install/config/config.sh)
 $(bash $HIARCHY_PATH/install/config/theme.sh)
+$(bash $HIARCHY_PATH/install/config/nvim.sh)
 
 hiarchy-refresh-limine
 hiarchy-refresh-plymouth
-# hiarchy-nvim-setup

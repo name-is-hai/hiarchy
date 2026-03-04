@@ -1,42 +1,43 @@
 #!/bin/bash
 
-# Copies the named config from ~/.local/share/hiarchy/config/X/Y/Z -> ~/.config/X/Y/Z.
-# If the config already exists, a backup of the existing will be taken as .bak.TIMESTAMP.
+# Refreshes a specific config file or folder
+# Usage: hiarchy-refresh-config hypr/hypridle.conf
 
-config_file=$1
+path_arg=$1
 
-if [[ -z "$config_file" ]]; then
-  cat <<USAGE
-  Usage: $0 [config_file]
-
-  Must provide a file path from the .config directory to be refreshed.
-  To copy ~/.local/share/hiarchy/config/hypr/hyprlock.conf to ~/.config/hypr/hyprlock.conf
-
-    $0 hypr/hyprlock.conf
-USAGE
+if [[ -z "$path_arg" ]]; then
+  echo "Usage: $0 [relative_path]"
   exit 1
 fi
 
-# Backup the destination file (with timestamp) to avoid clobbering (Ex: hyprlock.conf.bak.1753817951)
-user_config_file="${HOME}/.config/$config_file"
-default_config_file="${HOME}/.local/share/hiarchy/config/$config_file"
-backup_config_file="$user_config_file.bak.$(date +%s)"
+HIARCHY_PATH="${HIARCHY_PATH:-$HOME/.local/share/hiarchy}"
+CONFIG_DIR="$HIARCHY_PATH/config"
+TARGET_BASE="$HOME/.config"
 
-if [[ -f "$user_config_file" ]]; then
-  # Create preliminary backup
-  cp -f "$user_config_file" "$backup_config_file" 2>/dev/null
+# --- Determine if we are refreshing a Folder or a File ---
+source_path="$CONFIG_DIR/$path_arg"
+target_path="$TARGET_BASE/$path_arg"
 
-  # Replace config with new default
-  cp -f "$default_config_file" "$user_config_file" 2>/dev/null
-
-  # Compare and delete/inform accordingly
-  if cmp -s "$user_config_file" "$backup_config_file"; then
-    rm "$backup_config_file"
-  else
-    echo -e "\e[31mReplaced $user_config_file with new Hiarchy default.\nSaved backup as ${backup_config_file}.\n\n\e[32mChanges:\e[0m"
-    diff "$user_config_file" "$backup_config_file" || true
-  fi
-else
-  # Config file did not exist already
-  cp -f "$default_config_file" "$user_config_file" 2>/dev/null
+if [[ ! -e "$source_path" ]]; then
+    echo -e "\e[31mError: $source_path not found.\e[0m"
+    exit 1
 fi
+
+if [[ -d "$source_path" ]]; then
+    # If it's a directory, use GNU Stow for the whole folder
+    echo "Restowing directory: $path_arg"
+    stow -R -v --no-folding -t "$TARGET_BASE" -d "$CONFIG_DIR" "$path_arg"
+else
+    # If it's a specific file, ensure the target directory exists and link it
+    echo "Linking specific file: $path_arg"
+
+    # Backup if it's a real file, not a link
+    if [[ -f "$target_path" && ! -L "$target_path" ]]; then
+        mv "$target_path" "$target_path.bak.$(date +%s)"
+    fi
+
+    mkdir -p "$(dirname "$target_path")"
+    ln -snf "$source_path" "$target_path"
+fi
+
+echo -e "\e[32mSuccessfully refreshed $path_arg\e[0m"

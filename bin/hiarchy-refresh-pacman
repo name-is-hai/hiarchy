@@ -4,8 +4,11 @@
 # This is used after switching between Hiarchy release channels to ensure the right packages for the right channel are available.
 
 # Take backup of existing files
-sudo cp -f /etc/pacman.conf /etc/pacman.conf.bak
-sudo cp -f "$HIARCHY_PATH/default/pacman/pacman-stable.conf" /etc/pacman.conf
+if [[ -e /etc/pacman.conf && ! -L /etc/pacman.conf ]]; then
+  sudo mv /etc/pacman.conf /etc/pacman.conf.bak
+fi
+
+sudo ln -snf "$HIARCHY_PATH/default/pacman/pacman-stable.conf" "/etc/pacman.conf"
 
 # Reset all package DBs and then update
 sudo pacman -Syyu --noconfirm

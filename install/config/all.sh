@@ -1,7 +1,7 @@
 run_logged $HIARCHY_INSTALL/config/config.sh
 run_logged $HIARCHY_INSTALL/config/zsh.sh
 run_logged $HIARCHY_INSTALL/config/theme.sh
-run_logged $HIARCHY_INSTALL/config/git.sh
+run_logged $HIARCHY_INSTALL/config/nvim.sh
 run_logged $HIARCHY_INSTALL/config/gpg.sh
 run_logged $HIARCHY_INSTALL/config/timezones.sh
 run_logged $HIARCHY_INSTALL/config/increase-sudo-tries.sh

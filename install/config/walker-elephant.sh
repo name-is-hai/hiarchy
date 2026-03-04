@@ -2,11 +2,11 @@
 
 # Ensure Walker service is started automatically on boot
 mkdir -p ~/.config/autostart/
-cp $HIARCHY_PATH/default/walker/walker.desktop ~/.config/autostart/
+ln -snf "$HIARCHY_PATH/default/walker/walker.desktop" "~/.config/autostart/walker.desktop"
 
 # And is restarted if it crashes or is killed
 mkdir -p ~/.config/systemd/user/app-walker@autostart.service.d/
-cp $HIARCHY_PATH/default/walker/restart.conf ~/.config/systemd/user/app-walker@autostart.service.d/restart.conf
+ln -snf "$HIARCHY_PATH/default/walker/restart.conf" "~/.config/systemd/user/app-walker@autostart.service.d/restart.conf"
 
 # Create pacman hook to restart walker after updates
 sudo mkdir -p /etc/pacman.d/hooks

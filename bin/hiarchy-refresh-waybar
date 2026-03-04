@@ -2,6 +2,5 @@
 
 # Overwrite the user configs for the Waybar menu bar with the Hiarchy defaults and restart the service.
 
-hiarchy-refresh-config waybar/config.jsonc
-hiarchy-refresh-config waybar/style.css
+hiarchy-refresh-config waybar
 hiarchy-restart-waybar
