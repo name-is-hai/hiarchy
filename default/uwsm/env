@@ -1,5 +1,11 @@
 # Changes require a restart to take effect.
 
+# Ensure Hiarchy bins are in the path
+export HIARCHY_PATH=$HOME/.local/share/hiarchy
+export PATH=$HIARCHY_PATH/bin:$PATH
+
+# Changes require a restart to take effect.
+
 # Install other terminals via Install > Terminal
 export TERMINAL=xdg-terminal-exec
 

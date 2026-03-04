@@ -47,6 +47,7 @@
 ## 🔄 Updated
 
 ### Hiarchy Core
+- [ ] Update hiarchy-update-available
 - [x] Update hiarchy-menu
 - [x] Update hiarchy-remove-all
 - [x] Check show_update_channel_menu (possible removal)
@@ -72,11 +73,11 @@
 - [x] Update hiarchy-refresh-pacman → stable only
 - [x] Update install/hiarchy-base.packages (maybe remove hiarchy-nvim, hiarchy-walker)
 - [x] Update base-devel
-- [ ] Create package install flow for yay packages
+- [x] Create package install flow for yay packages
 
 ### Install / Config
 - [x] Add default/zsh and move zsh-related configs there
-- [ ] Add install/preflight/sudoers.sh to make sudo with out passwd
+- [x] Add install/preflight/sudoers.sh to make sudo with out passwd
 - [x] Add install/first-run/cloudflare-warp.sh path
 - [x] Update install/config/config.sh → use .zshrc
 - [x] Update install/config/hiarchy-ai-skill.sh
