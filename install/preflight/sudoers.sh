@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Grant temporary passwordless sudo access during installation
 # This is removed in the post-install phase
 echo "Setting up temporary passwordless sudo for installation..."

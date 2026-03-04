@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Remove temporary passwordless sudo access granted during installation
 echo "Removing temporary passwordless sudo access..."
 
