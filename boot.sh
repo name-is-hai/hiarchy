@@ -14,7 +14,8 @@ ansi_art='
 clear
 echo -e "\n$ansi_art\n"
 
-sudo pacman -Syu --noconfirm --needed base-devel git rust
+sudo pacman -Syu --noconfirm --needed base-devel git rustup
+rustup default stable
 
 # Use custom repo if specified, otherwise default to name-is-hai/hiarchy
 HIARCHY_REPO="${HIARCHY_REPO:-name-is-hai/hiarchy}"
