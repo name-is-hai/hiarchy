@@ -143,7 +143,7 @@ xmlstarlet
 git
 clang
 llvm
-rustup
+rust
 jdk-openjdk
 dotnet-runtime-9.0
 dart
