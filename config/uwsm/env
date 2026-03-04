@@ -1,1 +1,1 @@
-source "$HIARCHY_PATH/default/uwsm/env"
+source ~/.local/share/hiarchy/default/uwsm/env
