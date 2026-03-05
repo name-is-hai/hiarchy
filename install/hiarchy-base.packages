@@ -71,6 +71,7 @@ libpulse
 
 # NETWORKING
 iwd
+networkmanager
 wireless-regdb
 avahi
 nss-mdns
@@ -222,7 +223,8 @@ unzip
 elephant
 elephant-menus
 elephant-desktopapplications
-impala
+elephant-clipboard
+gazelle-tui
 tobi-try
 mise
 wiremix
