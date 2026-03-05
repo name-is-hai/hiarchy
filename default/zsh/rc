@@ -1,3 +1,4 @@
+source ~/.local/share/hiarchy/default/zsh/plugins
 source ~/.local/share/hiarchy/default/zsh/envs
 source ~/.local/share/hiarchy/default/zsh/shell
 source ~/.local/share/hiarchy/default/zsh/functions

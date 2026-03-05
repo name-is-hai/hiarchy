@@ -10,3 +10,9 @@ if [ "$current_shell" != "zsh" ]; then
 else
   echo "${NOTE} Your shell is already set to ${MAGENTA}zsh${RESET}."
 fi
+
+echo "Linking .zshrc..."
+
+[[ -e "$HOME/.zshrc" && ! -L "$HOME/.zshrc" ]] && mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
+
+ln -snf "$HIARCHY_PATH/default/zshrc" "$HOME/.zshrc"
