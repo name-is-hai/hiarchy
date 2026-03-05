@@ -36,7 +36,7 @@ rm -rf "$CURRENT_THEME_PATH"
 mv "$NEXT_THEME_PATH" "$CURRENT_THEME_PATH"
 
 # Store theme name for reference
-echo "$THEME_NAME" > "$HOME/.config/hiarchy/current/theme.name"
+echo "$THEME_NAME" >"$HOME/.config/hiarchy/current/theme.name"
 
 # Change background with theme
 hiarchy-theme-bg-next
@@ -56,6 +56,6 @@ hiarchy-theme-set-gnome
 hiarchy-theme-set-browser
 hiarchy-theme-set-vscode
 hiarchy-theme-set-obsidian
-
+hiarchy-theme-set-gazelle
 # Call hook on theme set
 hiarchy-hook theme-set "$THEME_NAME"
