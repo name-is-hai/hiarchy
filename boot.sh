@@ -19,7 +19,7 @@ rustup default stable
 
 # Use custom repo if specified, otherwise default to name-is-hai/hiarchy
 HIARCHY_REPO="${HIARCHY_REPO:-name-is-hai/hiarchy}"
-HIARCHY_REF="${HIARCHY_REF:-hirachy}"
+HIARCHY_REF="${HIARCHY_REF:-master}"
 
 echo -e "\e[32mUsing branch: $HIARCHY_REF\e[0m"
 echo -e "\nCloning Hiarchy from: https://github.com/${HIARCHY_REPO}.git"
