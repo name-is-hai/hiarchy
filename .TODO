@@ -102,6 +102,7 @@
 - [ ] Add Windows 11-style screenshot UI
 - [ ] Add screenshot style selector
 - [x] Add main monitor detect (hdmi-hotplug, hiarchy-main-monitor-detect)
+- [ ] Make smth like gazelle-tui but using in rust and make it have status of known network
 ---
 
 ## 🎨 Theming
