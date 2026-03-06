@@ -5,13 +5,20 @@ if command -v yay >/dev/null 2>&1; then
 fi
 
 # Move to home directory
-cd ~/
+cd ~/ || exit
 
 # Clone the repository
 git clone https://aur.archlinux.org/yay.git
 
 # Navigate into the folder
-cd yay
+cd yay || exit
 
 # Build and install
 makepkg -si --noconfirm
+
+if
+  command -v yay 2 >/dev/null &
+  1
+then
+  rm -r ~/yay
+fi
