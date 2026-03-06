@@ -164,10 +164,6 @@ postgresql-libs
 
 # CONTAINERS
 docker
-docker-buildx
-docker-compose
-lazydocker
-lazygit
 
 # EDITORS / IDE
 neovim
