@@ -12,6 +12,8 @@ zram-generator
 plymouth
 man-db
 tzupdate
+jq
+polkit-gnome
 
 # BOOTLOADER
 limine
