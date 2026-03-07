@@ -12,8 +12,6 @@ zram-generator
 plymouth
 man-db
 tzupdate
-jq
-polkit-gnome
 
 # BOOTLOADER
 limine
@@ -106,6 +104,7 @@ gvfs-mtp
 gvfs-nfs
 gvfs-smb
 gnome-disk-utility
+polkit-gnome
 
 # FONTS
 noto-fonts
@@ -161,6 +160,8 @@ python-poetry-core
 python-gobject
 python-terminaltexteffects
 postgresql-libs
+jq
+rsync
 
 # CONTAINERS
 docker
