@@ -33,4 +33,9 @@ alias ....='cd ../../..'
 # Tools
 alias d='docker'
 n() { if [ "$#" -eq 0 ]; then nvim .; else nvim "$@"; fi; }
-
+# Kubernetes
+if hiarchy-cmd-present kubectl; then
+  alias k='kubectl'
+  # This links the 'k' alias to the kubectl completion function
+  compdef __start_kubectl k
+fi

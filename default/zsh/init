@@ -17,3 +17,7 @@ fi
 if hiarchy-cmd-present fzf; then
   eval "$(fzf --zsh)"
 fi
+
+if hiarchy-cmd-present kubectl; then
+  source <(kubectl completion zsh)
+fi
