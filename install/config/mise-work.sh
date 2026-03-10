@@ -23,3 +23,7 @@ else
 
   mise install -y
 fi
+
+if command -v dotnet; then
+  sudo ln -snf "$(which dotnet)" /usr/bin/dotnet
+fi

@@ -1,6 +1,6 @@
 [tools]
 cloudflared = "latest"
-dotnet = "9.0.311"
+dotnet = ["9", "10"]
 node = "latest"
 pnpm = "latest"
 python = "latest"
