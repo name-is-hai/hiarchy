@@ -24,7 +24,7 @@ HIARCHY_REF="${HIARCHY_REF:-master}"
 echo -e "\e[32mUsing branch: $HIARCHY_REF\e[0m"
 echo -e "\nCloning Hiarchy from: https://github.com/${HIARCHY_REPO}.git"
 rm -rf ~/.local/share/hiarchy/
-git clone -b $HIARCHY_REF --single-branch "https://github.com/${HIARCHY_REPO}.git" --depth=1 ~/.local/share/hiarchy >/dev/null
+git clone -b $HIARCHY_REF --single-branch "https://github.com/${HIARCHY_REPO}.git" --recurse-submodules --shallow-submodules --depth=1 ~/.local/share/hiarchy >/dev/null
 
 echo -e "\nInstallation starting..."
 source ~/.local/share/hiarchy/install.sh
