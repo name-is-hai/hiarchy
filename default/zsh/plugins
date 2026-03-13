@@ -4,16 +4,16 @@ source /usr/share/zinit/zinit.zsh
 zinit snippet OMZP::starship
 
 # --- 2. Turbo Mode (Deferred Load) ---
-zinit ice wait'0' lucid; zinit snippet OMZP::git
-zinit ice wait'0' lucid; zinit light djui/alias-tips
-zinit ice wait'0' lucid; zinit light hlissner/zsh-autopair
+zinit snippet OMZP::git
+zinit light djui/alias-tips
+zinit light hlissner/zsh-autopair
 
 # Completion Engine Optimization
-zinit ice wait'0' lucid blockf; zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-completions
 
 # History Search
-zinit ice wait'0' lucid; zinit light zsh-users/zsh-history-substring-search
-zinit ice wait'0' lucid; zinit load zdharma-continuum/history-search-multi-word
+zinit light zsh-users/zsh-history-substring-search
+zinit load zdharma-continuum/history-search-multi-word
 
 # --- 3. Initialize Completion System ---
 # Use the -C flag to skip the expensive security check on every start
@@ -21,6 +21,6 @@ autoload -Uz compinit
 compinit -C
 
 # --- 4. UI Plugins (Must load after compinit) ---
-zinit ice wait'0' lucid; zinit light Aloxaf/fzf-tab
-zinit ice wait'0' lucid; zinit light zsh-users/zsh-autosuggestions
-zinit ice wait'0' lucid; zinit light zsh-users/zsh-syntax-highlighting
+zinit light Aloxaf/fzf-tab
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting

@@ -1,3 +1,6 @@
+# Copy
+alias copy="rsync -a --info=progress2 --mkpath"
+
 # Compression
 compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
 alias decompress="tar -xzf"

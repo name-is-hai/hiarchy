@@ -1,6 +1,6 @@
 # File system
 if hiarchy-cmd-present eza; then
-  alias ls='eza -lhaF --group-directories-first --icons=auto'
+  alias ls='eza -lha --group-directories-first --icons=auto'
   alias lsa='ls -a'
   alias lt='eza --tree --level=2 --long --icons --git'
   alias lta='lt -a'
@@ -33,9 +33,3 @@ alias ....='cd ../../..'
 # Tools
 alias d='docker'
 n() { if [ "$#" -eq 0 ]; then nvim .; else nvim "$@"; fi; }
-# Kubernetes
-if hiarchy-cmd-present kubectl; then
-  alias k='kubectl'
-  # This links the 'k' alias to the kubectl completion function
-  compdef __start_kubectl k
-fi
