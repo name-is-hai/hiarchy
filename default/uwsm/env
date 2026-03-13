@@ -3,7 +3,7 @@
 # Ensure Hiarchy bins are in the path
 export HIARCHY_PATH=$HOME/.local/share/hiarchy
 export PATH=$HIARCHY_PATH/bin:$PATH
-
+export PATH=/home/liam/.dotnet/tools:$PATH
 # Changes require a restart to take effect.
 
 # Install other terminals via Install > Terminal
