@@ -1,6 +1,6 @@
 [tools]
 cloudflared = "latest"
-dotnet = ["9", "10"]
+dotnet = ["9.0.311", "10.0.103"]
 node = "latest"
 pnpm = "latest"
 python = "latest"
@@ -15,3 +15,4 @@ aws-cli = { version = "latest", symlink_bins = "true" }
 "github:jesseduffield/lazydocker" = "latest"
 docker-compose = "latest"
 docker-cli = "latest"
+prek = "latest"

@@ -21,3 +21,9 @@ fi
 if hiarchy-cmd-present kubectl; then
   source <(kubectl completion zsh)
 fi
+
+if hiarchy-cmd-present aws; then
+  autoload -Uz compinit && compinit
+  autoload -Uz bashcompinit && bashcompinit
+  complete -C "$(which aws_completer)" aws
+fi

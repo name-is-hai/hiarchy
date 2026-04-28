@@ -1,1 +1,4 @@
 source ~/.local/share/hiarchy/default/zsh/rc
+
+# opencode
+export PATH=/home/liam/.opencode/bin:$PATH
